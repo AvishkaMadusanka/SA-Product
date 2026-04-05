@@ -1,0 +1,217 @@
+<!-- Birthday Cakes Gallery Modal -->
+<div id="birthdayGallery" class="gallery-modal">
+    <div class="gallery-container">
+        <button class="gallery-close-btn" onclick="closeBirthdayGallery()">&times;</button>
+        
+        <div class="gallery-header">
+            <h2>Birthday Cakes Collection</h2>
+            <p>Explore our delicious birthday cake designs</p>
+        </div>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="Birthday Cakes/1.jpg" alt="Birthday Cake 1">
+            </div>
+            <div class="gallery-item">
+                <img src="Birthday Cakes/2.jpg" alt="Birthday Cake 2">
+            </div>
+            <div class="gallery-item">
+                <img src="Birthday Cakes/3.jpg" alt="Birthday Cake 3">
+            </div>
+            <div class="gallery-item">
+                <img src="Birthday Cakes/4.jpg" alt="Birthday Cake 4">
+            </div>
+            <div class="gallery-item">
+                <img src="Birthday Cakes/5.jpg" alt="Birthday Cake 5">
+            </div>
+            <div class="gallery-item">
+                <img src="Birthday Cakes/6.jpg" alt="Birthday Cake 6">
+            </div>
+            <div class="gallery-item">
+                <img src="Birthday Cakes/7.jpg" alt="Birthday Cake 7">
+            </div>
+            <div class="gallery-item">
+                <img src="Birthday Cakes/8.jpg" alt="Birthday Cake 8">
+            </div>
+            <div class="gallery-item">
+                <img src="Birthday Cakes/9.jpg" alt="Birthday Cake 9">
+            </div>
+            <div class="gallery-item">
+                <img src="Birthday Cakes/10.jpg" alt="Birthday Cake 10">
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .gallery-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 2000;
+        align-items: center;
+        justify-content: center;
+        overflow-y: auto;
+        padding: 20px 0;
+        animation: fadeIn 0.3s ease;
+    }
+
+    .gallery-modal.active {
+        display: flex;
+    }
+
+    .gallery-container {
+        background: white;
+        border-radius: 20px;
+        padding: 50px 40px;
+        max-width: 1200px;
+        width: 95%;
+        position: relative;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        animation: slideUp 0.4s ease;
+    }
+
+    .gallery-close-btn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: none;
+        border: none;
+        font-size: 32px;
+        cursor: pointer;
+        color: #333;
+        transition: all 0.3s ease;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .gallery-close-btn:hover {
+        color: #ff69b4;
+        transform: rotate(90deg);
+    }
+
+    .gallery-header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .gallery-header h2 {
+        font-size: 36px;
+        font-weight: 800;
+        color: #2c3e50;
+        margin-bottom: 10px;
+    }
+
+    .gallery-header p {
+        font-size: 16px;
+        color: #666;
+    }
+
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 25px;
+    }
+
+    .gallery-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: 15px;
+        aspect-ratio: 1;
+        background: linear-gradient(135deg, #fff5f7 0%, #fff 100%);
+        box-shadow: 0 5px 20px rgba(255, 105, 180, 0.1);
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .gallery-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(255, 105, 180, 0.25);
+    }
+
+    .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: all 0.3s ease;
+    }
+
+    .gallery-item:hover img {
+        transform: scale(1.05);
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes slideUp {
+        from {
+            transform: translateY(50px);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .gallery-container {
+            padding: 30px 20px;
+        }
+
+        .gallery-header h2 {
+            font-size: 28px;
+        }
+
+        .gallery-grid {
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-close-btn {
+            top: 10px;
+            right: 10px;
+            font-size: 28px;
+        }
+    }
+</style>
+
+<script>
+    function openBirthdayGallery() {
+        document.getElementById('birthdayGallery').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeBirthdayGallery() {
+        document.getElementById('birthdayGallery').classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+
+    // Close gallery when clicking outside
+    document.addEventListener('click', function(event) {
+        const gallery = document.getElementById('birthdayGallery');
+        if (event.target === gallery) {
+            closeBirthdayGallery();
+        }
+    });
+
+    // Close gallery on Escape key
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            closeBirthdayGallery();
+        }
+    });
+</script>

@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Share Your Feedback | S A Product</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #e91e63;
+            --accent-color: #ff6f61;
+            --dark-color: #2d3436;
+            --text-light: #636e72;
+            --bg: #f5f7fa;
+            --card: #ffffff;
+            --radius: 16px;
+            --shadow: 0 25px 70px rgba(233, 30, 99, 0.12);
+            --transition: all 0.3s ease;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Poppins', 'Segoe UI', Tahoma, sans-serif;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(245, 247, 250, 0.95));
+            color: var(--dark-color);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+        .page {
+            max-width: 1100px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: 28px;
+            align-items: stretch;
+        }
+        .card {
+            background: var(--card);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 32px;
+            position: relative;
+        }
+        h1 {
+            font-size: 30px;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, var(--dark-color), var(--primary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        p.sub {
+            color: var(--text-light);
+            margin-bottom: 24px;
+            line-height: 1.7;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        label {
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--dark-color);
+        }
+        input, textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border-radius: 10px;
+            border: 2px solid rgba(233, 30, 99, 0.15);
+            font-family: inherit;
+            font-size: 14px;
+            color: var(--dark-color);
+            background: #fff;
+            transition: var(--transition);
+        }
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.12);
+        }
+        textarea { resize: vertical; min-height: 120px; }
+        .upload {
+            border: 2px dashed rgba(233, 30, 99, 0.2);
+            padding: 16px;
+            border-radius: 12px;
+            text-align: center;
+            color: var(--text-light);
+            background: rgba(233, 30, 99, 0.03);
+        }
+        .actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 6px;
+        }
+        .btn {
+            border: none;
+            border-radius: 12px;
+            padding: 14px 22px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: #fff;
+            box-shadow: 0 12px 30px rgba(233, 30, 99, 0.25);
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 40px rgba(233, 30, 99, 0.35); }
+        .btn-outline {
+            background: #fff;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+        .btn-outline:hover { background: var(--primary-color); color: #fff; }
+        .preview-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius);
+            height: 100%;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-start;
+            background: linear-gradient(135deg, rgba(233, 30, 99, 0.12), rgba(255, 111, 97, 0.12));
+        }
+        .preview-image {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            filter: saturate(1.05);
+            opacity: 0.9;
+        }
+        .preview-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.55) 100%);
+        }
+        .preview-content {
+            position: relative;
+            z-index: 1;
+            padding: 28px;
+            color: #fff;
+            width: 100%;
+            max-height: 420px;
+            overflow-y: auto;
+            scroll-behavior: smooth;
+        }
+
+        .preview-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .preview-content::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.12);
+            border-radius: 4px;
+        }
+
+        .preview-content::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.4);
+            border-radius: 4px;
+        }
+
+        .preview-content::-webkit-scrollbar-thumb:hover {
+            background: rgba(255,255,255,0.6);
+        }
+        .saved-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 12px;
+            border-radius: 10px;
+            background: rgba(46, 125, 50, 0.18);
+            color: #c8f7c5;
+            font-weight: 700;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+        .preview-content h3 {
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+        .preview-content .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.14);
+            font-weight: 600;
+            margin-bottom: 14px;
+        }
+        .preview-content p {
+            line-height: 1.7;
+            font-size: 15px;
+            opacity: 0.92;
+        }
+        .status {
+            margin-top: 10px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        @media (max-width: 900px) {
+            .page { grid-template-columns: 1fr; }
+            .card { padding: 24px; }
+            body { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="card">
+            <h1>Happy Customers</h1>
+            <p class="sub">Share your experience with S A Product. Add a short note and an optional image—we'll preview it live so you can see how it looks.</p>
+            <form id="feedbackForm">
+                <div>
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Your name" required>
+                </div>
+                <div>
+                    <label for="message">Feedback</label>
+                    <textarea id="message" name="message" placeholder="Tell us about your cake" required></textarea>
+                </div>
+                <div class="upload">
+                    <label for="photo">Add an image (optional)</label>
+                    <input type="file" id="photo" accept="image/*">
+                    <p style="margin-top: 8px; font-size: 13px; color: var(--text-light);">Choose a cake photo to show behind your feedback.</p>
+                </div>
+                <div class="actions">
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Submit Feedback</button>
+                    <a class="btn btn-outline" href="index.html"><i class="fas fa-arrow-left"></i> Back to Home</a>
+                </div>
+                <div id="status" class="status" aria-live="polite"></div>
+            </form>
+        </div>
+        <div class="card preview-card">
+            <div id="previewImage" class="preview-image" style="background-image:url('page photos/bg photo.jpg');"></div>
+            <div class="preview-overlay"></div>
+            <div class="preview-content">
+                <div id="savedLabel" class="saved-label" style="display:none;"><i class="fas fa-check-circle"></i><span>Latest submission</span></div>
+                <div class="tag"><i class="fas fa-star"></i><span>Live Preview</span></div>
+                <h3 id="previewName"></h3>
+                <p id="previewText"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('feedbackForm');
+        const previewName = document.getElementById('previewName');
+        const previewText = document.getElementById('previewText');
+        const previewImage = document.getElementById('previewImage');
+        const statusEl = document.getElementById('status');
+        const photoInput = document.getElementById('photo');
+        const savedLabel = document.getElementById('savedLabel');
+
+        const LIST_KEY = 'saFeedbackList';
+        const LATEST_KEY = 'saFeedback';
+        const COUNT_KEY = 'saFeedbackCount';
+
+        const getFeedbackList = () => {
+            const stored = localStorage.getItem(LIST_KEY);
+            if (!stored) return [];
+            try {
+                const parsed = JSON.parse(stored);
+                return Array.isArray(parsed) ? parsed : [];
+            } catch (err) {
+                console.error('Failed to parse feedback list', err);
+                return [];
+            }
+        };
+
+        const persistFeedback = (list) => {
+            localStorage.setItem(LIST_KEY, JSON.stringify(list));
+            localStorage.setItem(COUNT_KEY, list.length);
+            if (list.length) {
+                localStorage.setItem(LATEST_KEY, JSON.stringify(list[list.length - 1]));
+            }
+        };
+
+        const loadSavedFeedback = () => {
+            const list = getFeedbackList();
+            const saved = list[list.length - 1] || (() => {
+                const legacy = localStorage.getItem(LATEST_KEY);
+                try { return legacy ? JSON.parse(legacy) : null; } catch { return null; }
+            })();
+            if (!saved) return;
+
+            previewName.textContent = saved.name;
+            previewText.textContent = saved.message || '“Your feedback will appear here with your image behind it.”';
+            if (saved.image) {
+                previewImage.style.backgroundImage = `url('${saved.image}')`;
+            }
+            savedLabel.style.display = 'inline-flex';
+        };
+
+        // Live text preview
+        document.getElementById('name').addEventListener('input', (e) => {
+            previewName.textContent = e.target.value || 'Your Name';
+        });
+        document.getElementById('message').addEventListener('input', (e) => {
+            previewText.textContent = e.target.value || '“Your feedback will appear here with your image behind it.”';
+        });
+
+        // Image preview
+        photoInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = (ev) => {
+                previewImage.style.backgroundImage = `url('${ev.target.result}')`;
+            };
+            reader.readAsDataURL(file);
+        });
+
+        const saveSubmission = (imageData, nameVal, msgVal) => {
+            const payload = {
+                name: nameVal,
+                message: msgVal,
+                image: imageData || 'page photos/bg photo.jpg',
+                timestamp: Date.now()
+            };
+            const list = getFeedbackList();
+            list.push(payload);
+            persistFeedback(list);
+
+            savedLabel.style.display = 'inline-flex';
+            previewName.textContent = payload.name;
+            previewText.textContent = payload.message;
+            previewImage.style.backgroundImage = `url('${payload.image}')`;
+        };
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Capture values BEFORE any async operations
+            const nameVal = document.getElementById('name').value;
+            const msgVal = document.getElementById('message').value;
+            const file = photoInput.files[0];
+            
+            statusEl.textContent = 'Sending...';
+            statusEl.style.color = '#e91e63';
+
+            setTimeout(() => {
+                statusEl.textContent = 'Thank you! Your feedback was captured.';
+                statusEl.style.color = '#2e7d32';
+
+                const reader = file ? new FileReader() : null;
+
+                if (reader) {
+                    reader.onload = (ev) => saveSubmission(ev.target.result, nameVal, msgVal);
+                    reader.readAsDataURL(file);
+                } else {
+                    saveSubmission(null, nameVal, msgVal);
+                }
+
+                form.reset();
+                photoInput.value = '';
+            }, 800);
+        });
+
+        // Show latest feedback when page opens (after clicking the Happy Customers badge)
+        loadSavedFeedback();
+    </script>
+</body>
+</html>
