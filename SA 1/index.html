@@ -1,0 +1,1816 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S A Product </title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Header/Navigation -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <a class="logo" href="#home" aria-label="Go to home page">
+                        <img src="page photos/LOGO-removebg-preview.png" alt="S A Product Logo" class="logo-image">
+                        <span class="logo-text">
+                            <span class="logo-title">S A Product</span>
+                            <small class="logo-subtitle">Welcome to the Cake World</small>
+                        </span>
+                    </a>
+
+                    <button class="hamburger" id="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+
+                    <ul class="nav-menu" id="navMenu">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#cakes">Our Cakes</a></li>
+                        <li><a href="#why-us">Why Choose Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+
+                    <button class="cta-btn btn-primary order-trigger" type="button" onclick="openOrderModal()">
+                        <i class="fas fa-shopping-cart"></i> Order Your Custom Cake
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="container">
+                <div class="hero-text">
+                    <h1 class="hero-title">Fresh & Delicious Cakes<br><span class="gradient-text">for Every
+                            Occasion</span></h1>
+                    <p class="hero-subtitle">From birthday celebrations to wedding dreams, we create handcrafted cakes
+                        that taste as amazing as they look. Made fresh daily with premium ingredients.</p>
+
+                    <div class="trust-badges">
+                        <div class="badge">
+                            <i class="fas fa-leaf"></i>
+                            <span>100% Fresh Ingredients</span>
+                        </div>
+                        <div class="badge">
+                            <i class="fas fa-truck"></i>
+                            <span>Same Day Delivery</span>
+                        </div>
+                        <div class="badge">
+                            <i class="fas fa-palette"></i>
+                            <span>Custom Designs Available</span>
+                        </div>
+                    </div>
+
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary btn-lg order-trigger" type="button" onclick="openOrderModal()">
+                            <i class="fas fa-cart-plus"></i> Order Your Cake Now
+                        </button>
+                        <button class="btn btn-outline btn-lg" onclick="openAllCakesGallery()">
+                            <i class="fas fa-eye"></i> Browse Our Flavors
+                        </button>
+                    </div>
+                </div>
+
+                <div class="hero-image">
+                    <div class="cake-image-placeholder" role="button" tabindex="0" onclick="openFeedbackList()"
+                        onkeypress="if(event.key==='Enter') openFeedbackList();">
+                        <i class="fas fa-cake-candles"></i>
+                    </div>
+                    <button class="stats-badge" type="button" onclick="openFeedbackPreview()"
+                        title="See latest feedback and submit yours">
+                        <div class="stat">
+                            <h3 id="statCount">500+</h3>
+                            <p>Happy Customers</p>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Feedback Preview Modal -->
+    <div id="feedbackModal" class="feedback-modal" aria-hidden="true">
+        <div class="feedback-modal-backdrop" onclick="closeFeedbackPreview()"></div>
+        <div class="feedback-modal-card" role="dialog" aria-modal="true" aria-labelledby="feedbackModalTitle">
+            <button class="feedback-modal-close" onclick="closeFeedbackPreview()" aria-label="Close">&times;</button>
+            <div class="feedback-modal-body">
+                <div class="feedback-modal-image" id="feedbackPreviewImage"></div>
+                <div class="feedback-modal-content">
+                    <div class="feedback-preview-section" id="feedbackPreviewSection">
+                        <p class="feedback-modal-label">Latest submission</p>
+                        <h3 id="feedbackModalTitle">Happy Customer</h3>
+                        <p id="feedbackModalText">"Submit feedback to see it here."</p>
+                        <div class="feedback-modal-actions">
+                            <a href="feedback.html" class="btn btn-primary btn-lg"><i class="fas fa-pen"></i> Add Your
+                                Feedback</a>
+                            <button class="btn btn-outline btn-lg" onclick="closeFeedbackPreview()">Close</button>
+                        </div>
+                    </div>
+                    <div class="feedback-list-section" id="feedbackListSection">
+                        <h3 class="feedback-list-title">Customer Feedback</h3>
+                        <div class="feedback-list" id="feedbackList"></div>
+                        <div class="feedback-list-actions">
+                            <a href="feedback.html" class="btn btn-primary"><i class="fas fa-pen"></i> Add Your
+                                Feedback</a>
+                            <button class="btn btn-outline" onclick="closeFeedbackPreview()">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Feedback Detail Modal -->
+    <div id="feedbackDetailModal" class="feedback-detail-modal" aria-hidden="true">
+        <div class="feedback-detail-backdrop" onclick="closeFeedbackDetail()"></div>
+        <div class="feedback-detail-card" role="dialog" aria-modal="true">
+            <button class="feedback-detail-close" onclick="closeFeedbackDetail()" aria-label="Close">&times;</button>
+            <div class="feedback-detail-image" id="detailImage"></div>
+            <div class="feedback-detail-content">
+                <div class="feedback-detail-header">
+                    <h2 id="detailName"></h2>
+                    <span class="feedback-detail-date" id="detailDate"></span>
+                </div>
+                <div class="feedback-detail-message" id="detailMessage"></div>
+                <div class="feedback-detail-actions">
+                    <button class="btn btn-outline" onclick="closeFeedbackDetail()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Cake Order Modal -->
+    <div id="orderModal" class="order-modal" aria-hidden="true">
+        <div class="order-modal-backdrop" onclick="closeOrderModal()"></div>
+        <div class="order-modal-card" role="dialog" aria-modal="true" aria-labelledby="orderModalTitle">
+            <button type="button" class="order-modal-close" onclick="closeOrderModal()" aria-label="Close">&times;</button>
+            <h3 id="orderModalTitle">Order Your Custom Cake</h3>
+            <p class="order-modal-subtitle">Fill in your details and we will contact you on WhatsApp.</p>
+
+            <form id="orderForm" class="order-form">
+                <label for="orderName">Name</label>
+                <input id="orderName" name="name" type="text" placeholder="Your full name" required>
+
+                <label for="orderPhone">Contact Number</label>
+                <input id="orderPhone" name="phone" type="tel" placeholder="0719323620" required>
+
+                <label for="orderDetails">Order Details</label>
+                <textarea id="orderDetails" name="details" rows="4" placeholder="Flavor, size, design, date needed..." required></textarea>
+
+                <label for="orderPhoto">Photo</label>
+                <input id="orderPhoto" name="photo" type="file" accept="image/*">
+
+                <label for="orderWhatsapp">WhatsApp Number (optional)</label>
+                <input id="orderWhatsapp" name="whatsapp" type="tel" placeholder="+94 77 123 4567">
+
+                <div class="order-form-actions">
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Submit Order</button>
+                    <button type="button" class="btn btn-outline" onclick="closeOrderModal()">Cancel</button>
+                </div>
+                <p id="orderFormStatus" class="order-form-status" aria-live="polite"></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Cake Categories -->
+    <section class="cakes-section" id="cakes">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Cake Categories</h2>
+                <p>Explore our delicious selection of handcrafted cakes</p>
+            </div>
+
+            <div class="cakes-grid">
+                <div class="cake-card" onclick="openBirthdayGallery()">
+                    <div class="cake-image">
+                        <img src="Birthday Cakes/10.jpg" alt="Latest Birthday Cake" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <h3>Birthday Cakes</h3>
+                    <p>Celebrate in style with our vibrant and delicious birthday cakes. Perfect for all ages!</p>
+                    <a href="#" class="explore-link" onclick="event.stopPropagation(); openBirthdayGallery(); return false;">Explore <i
+                            class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="cake-card" onclick="openWeddingGallery()">
+                    <div class="cake-image">
+                        <img src="Wedding Cakes/12.jpg" alt="Latest Wedding Cake" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <h3>Wedding Cakes</h3>
+                    <p>Make your special day even sweeter with our elegant and romantic wedding cake designs.</p>
+                    <a href="#" class="explore-link" onclick="event.stopPropagation(); openWeddingGallery(); return false;">Explore <i
+                            class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="cake-card" onclick="openCupcakesGallery()">
+                    <div class="cake-image">
+                        <img src="Cupcakes/10.jpg" alt="Latest Cupcakes" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <h3>Cupcakes</h3>
+                    <p>Individual treats perfect for parties, events, or just because. Available in many flavors!</p>
+                    <a href="#" class="explore-link" onclick="event.stopPropagation(); openCupcakesGallery(); return false;">Explore <i
+                            class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="cake-card" onclick="openCustomCakesGallery()">
+                    <div class="cake-image">
+                        <img src="Structured Cakes/11.jpg" alt="Latest Custom Cake" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <h3>Custom Cakes</h3>
+                    <p>Your imagination is our limit! Create your perfect custom cake with our talented bakers.</p>
+                    <a href="#" class="explore-link" onclick="event.stopPropagation(); openCustomCakesGallery(); return false;">Explore <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="cake-card" onclick="openStructuredGallery()">
+                    <div class="cake-image">
+                        <img src="Structured Cakes/11.jpg" alt="Latest Structured Cake" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <h3>Structured Cakes</h3>
+                    <p>Stunning tiered and architecturally designed cakes that are as beautiful as they are delicious!
+                    </p>
+                        <a href="#" class="explore-link" onclick="event.stopPropagation(); openStructuredGallery(); return false;">Explore <i
+                            class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-us-section" id="why-us">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose S A Product?</h2>
+                <p>Discover what makes us special</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card feature-card-image">
+                    <div class="feature-image">
+                        <img src="page photos/Fresh Ingredients.webp" alt="Fresh Ingredients">
+                    </div>
+                    <h3>Fresh Ingredients</h3>
+                    <p>We use only the finest, freshest ingredients sourced from trusted local suppliers.</p>
+                </div>
+
+                <div class="feature-card feature-card-image">
+                    <div class="feature-image">
+                        <img src="page photos/Custom Designs.png" alt="Custom Designs">
+                    </div>
+                    <h3>Custom Designs</h3>
+                    <p>Our expert designers can create any cake design you imagine for your special occasion.</p>
+                </div>
+
+                <div class="feature-card feature-card-image">
+                    <div class="feature-image">
+                        <img src="page photos/fast delevary.avif" alt="Fast Delivery">
+                    </div>
+                    <h3>Fast Delivery</h3>
+                    <p>Same-day delivery available! Get your cake fresh to your doorstep when you need it.</p>
+                </div>
+
+                <div class="feature-card feature-card-image">
+                    <div class="feature-image">
+                        <img src="page photos/Expert Bakers.png" alt="Expert Bakers">
+                    </div>
+                    <h3>Expert Bakers</h3>
+                    <p>Our team of professional bakers brings years of experience and passion to every cake.</p>
+                </div>
+
+                <div class="feature-card feature-card-image">
+                    <div class="feature-image">
+                        <img src="page photos/Affordable Prices.webp" alt="Affordable Prices">
+                    </div>
+                    <h3>Affordable Prices</h3>
+                    <p>Premium quality cakes at prices that won't break the bank. Great value guaranteed!</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Made with Love</h3>
+                    <p>Every cake is baked with passion and care to ensure absolute satisfaction.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call-to-Action Section -->
+    <section class="cta-section">
+        <div class="cta-overlay"></div>
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Order Your Perfect Cake?</h2>
+                <p>Don't wait! Place your order now and enjoy fresh, delicious cakes delivered to your door</p>
+
+                <div class="cta-methods">
+                    <a class="method method-link" href="tel:+94719323620" aria-label="Call 0719323620">
+                        <i class="fas fa-phone"></i>
+                        <h4>Call Us</h4>
+                        <p>+94 (71) 932-3620</p>
+                    </a>
+                    <a class="method method-link" href="https://wa.me/94719323620" target="_blank" rel="noopener noreferrer" aria-label="Open WhatsApp chat">
+                        <i class="fab fa-whatsapp"></i>
+                        <h4>WhatsApp</h4>
+                        <p>Quick Chat</p>
+                    </a>
+                    <a class="method method-link" href="#" onclick="openOrderModal(); return false;" aria-label="Open order form">
+                        <i class="fas fa-envelope"></i>
+                        <h4>Order Form</h4>
+                        <p>Online Booking</p>
+                    </a>
+                </div>
+
+                <div class="cta-buttons">
+                    <button class="btn btn-primary btn-lg order-trigger" type="button" onclick="openOrderModal()">
+                        <i class="fas fa-shopping-cart"></i> Place Your Order
+                    </button>
+                    <a href="tel:+94719323620" class="btn btn-outline-white btn-lg">
+                        <i class="fas fa-phone"></i> Call Now
+                    </a>
+                </div>
+
+                <div class="trust-text">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>100% Satisfaction Guaranteed | Fresh Delivery | Custom Designs</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>S A Product</h3>
+                    <p>Crafting delicious memories, one cake at a time. Your trusted cake bakery for every celebration.
+                    </p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/share/1AQsM8F8dT/?mibextid=wwXIfr" target="_blank"
+                            aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/94719323620" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#cakes">Our Cakes</a></li>
+                        <li><a href="#why-us">Why Choose Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> +94 (71) 932-3620</li>
+                        <li><i class="fas fa-envelope"></i> ayeshachamali4@gmail.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> 317/B, Dewalegawa, Kahangama, Ratnapura</li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Refund Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 S A Product. All rights reserved. | Welcome to the cake world </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Birthday Cakes Gallery Modal -->
+    <div id="birthdayGallery" class="gallery-modal">
+        <div class="gallery-container">
+            <button class="gallery-close-btn" onclick="closeBirthdayGallery()">&times;</button>
+
+            <div class="gallery-header">
+                <h2>Birthday Cakes Collection</h2>
+                <p>Explore our delicious birthday cake designs</p>
+                <button class="admin-add-inline owner-only" type="button" onclick="openOwnerAdmin('birthday')">
+                    <i class="fas fa-plus"></i> Add Photo
+                </button>
+            </div>
+
+            <div class="gallery-grid" id="birthdayGrid">
+                <div class="gallery-item">
+                    <img src="Birthday Cakes/1.jpg" alt="Birthday Cake 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="Birthday Cakes/2.jpg" alt="Birthday Cake 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="Birthday Cakes/3.jpg" alt="Birthday Cake 3">
+                </div>
+                <div class="gallery-item">
+                    <img src="Birthday Cakes/4.jpg" alt="Birthday Cake 4">
+                </div>
+                <div class="gallery-item">
+                    <img src="Birthday Cakes/5.jpg" alt="Birthday Cake 5">
+                </div>
+                <div class="gallery-item">
+                    <img src="Birthday Cakes/6.jpg" alt="Birthday Cake 6">
+                </div>
+                <div class="gallery-item">
+                    <img src="Birthday Cakes/7.jpg" alt="Birthday Cake 7">
+                </div>
+                <div class="gallery-item">
+                    <img src="Birthday Cakes/8.jpg" alt="Birthday Cake 8">
+                </div>
+                <div class="gallery-item">
+                    <img src="Birthday Cakes/9.jpg" alt="Birthday Cake 9">
+                </div>
+                <div class="gallery-item">
+                    <img src="Birthday Cakes/10.jpg" alt="Birthday Cake 10">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wedding Cakes Gallery Modal -->
+    <div id="weddingGallery" class="gallery-modal">
+        <div class="gallery-container">
+            <button class="gallery-close-btn" onclick="closeWeddingGallery()">&times;</button>
+
+            <div class="gallery-header">
+                <h2>Wedding Cakes Collection</h2>
+                <p>Elegant designs for your special day</p>
+                <button class="admin-add-inline owner-only" type="button" onclick="openOwnerAdmin('wedding')">
+                    <i class="fas fa-plus"></i> Add Photo
+                </button>
+            </div>
+
+            <div class="gallery-grid" id="weddingGrid">
+                <div class="gallery-item">
+                    <img src="Wedding Cakes/1.jpg" alt="Wedding Cake 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="Wedding Cakes/2.jpg" alt="Wedding Cake 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="Wedding Cakes/3.jpg" alt="Wedding Cake 3">
+                </div>
+                <div class="gallery-item">
+                    <img src="Wedding Cakes/4.jpg" alt="Wedding Cake 4">
+                </div>
+                <div class="gallery-item">
+                    <img src="Wedding Cakes/5.jpg" alt="Wedding Cake 5">
+                </div>
+                <div class="gallery-item">
+                    <img src="Wedding Cakes/6.jpg" alt="Wedding Cake 6">
+                </div>
+                <div class="gallery-item">
+                    <img src="Wedding Cakes/7.jpg" alt="Wedding Cake 7">
+                </div>
+                <div class="gallery-item">
+                    <img src="Wedding Cakes/8.jpg" alt="Wedding Cake 8">
+                </div>
+                <div class="gallery-item">
+                    <img src="Wedding Cakes/9.jpg" alt="Wedding Cake 9">
+                </div>
+                <div class="gallery-item">
+                    <img src="Wedding Cakes/10.jpg" alt="Wedding Cake 10">
+                </div>
+                <div class="gallery-item">
+                    <img src="Wedding Cakes/11.jpg" alt="Wedding Cake 11">
+                </div>
+                <div class="gallery-item">
+                    <img src="Wedding Cakes/12.jpg" alt="Wedding Cake 12">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Structured Cakes Gallery Modal -->
+    <div id="structuredGallery" class="gallery-modal">
+        <div class="gallery-container">
+            <button class="gallery-close-btn" onclick="closeStructuredGallery()">&times;</button>
+
+            <div class="gallery-header">
+                <h2>Structured Cakes Collection</h2>
+                <p>Stunning tiered and architecturally designed masterpieces</p>
+                <button class="admin-add-inline owner-only" type="button" onclick="openOwnerAdmin('structured')">
+                    <i class="fas fa-plus"></i> Add Photo
+                </button>
+            </div>
+
+            <div class="gallery-grid" id="structuredGrid">
+                <div class="gallery-item">
+                    <img src="Structured Cakes/1.jpg" alt="Structured Cake 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="Structured Cakes/2.jpg" alt="Structured Cake 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="Structured Cakes/3.jpg" alt="Structured Cake 3">
+                </div>
+                <div class="gallery-item">
+                    <img src="Structured Cakes/4.jpg" alt="Structured Cake 4">
+                </div>
+                <div class="gallery-item">
+                    <img src="Structured Cakes/5.jpg" alt="Structured Cake 5">
+                </div>
+                <div class="gallery-item">
+                    <img src="Structured Cakes/6.jpg" alt="Structured Cake 6">
+                </div>
+                <div class="gallery-item">
+                    <img src="Structured Cakes/7.jpg" alt="Structured Cake 7">
+                </div>
+                <div class="gallery-item">
+                    <img src="Structured Cakes/8.jpg" alt="Structured Cake 8">
+                </div>
+                <div class="gallery-item">
+                    <img src="Structured Cakes/9.jpg" alt="Structured Cake 9">
+                </div>
+                <div class="gallery-item">
+                    <img src="Structured Cakes/10.jpg" alt="Structured Cake 10">
+                </div>
+                <div class="gallery-item">
+                    <img src="Structured Cakes/11.jpg" alt="Structured Cake 11">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Cakes Gallery Modal -->
+    <div id="customCakesGallery" class="gallery-modal">
+        <div class="gallery-container">
+            <button class="gallery-close-btn" onclick="closeCustomCakesGallery()">&times;</button>
+
+            <div class="gallery-header">
+                <h2>Custom Cakes Collection</h2>
+                <p>Create your perfect custom cake with our talented bakers</p>
+                <button class="admin-add-inline owner-only" type="button" onclick="openOwnerAdmin('custom')">
+                    <i class="fas fa-plus"></i> Add Photo
+                </button>
+            </div>
+
+            <div class="gallery-grid" id="customCakesGrid">
+                <div class="gallery-item">
+                    <img src="Custom Cakes/1.jpg" alt="Custom Cake 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="Custom Cakes/2.jpg" alt="Custom Cake 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="Custom Cakes/3.jpg" alt="Custom Cake 3">
+                </div>
+                <div class="gallery-item">
+                    <img src="Custom Cakes/4.jpg" alt="Custom Cake 4">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cupcakes Gallery Modal -->
+    <div id="cupcakesGallery" class="gallery-modal">
+        <div class="gallery-container">
+            <button class="gallery-close-btn" onclick="closeCupcakesGallery()">&times;</button>
+
+            <div class="gallery-header">
+                <h2>Cupcakes Collection</h2>
+                <p>Individual treats perfect for any occasion</p>
+                <button class="admin-add-inline owner-only" type="button" onclick="openOwnerAdmin('cupcakes')">
+                    <i class="fas fa-plus"></i> Add Photo
+                </button>
+            </div>
+
+            <div class="gallery-grid" id="cupcakesGrid">
+                <div class="gallery-item">
+                    <img src="Cupcakes/1.jpg" alt="Cupcake 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="Cupcakes/2.jpg" alt="Cupcake 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="Cupcakes/3.jpg" alt="Cupcake 3">
+                </div>
+                <div class="gallery-item">
+                    <img src="Cupcakes/4.jpg" alt="Cupcake 4">
+                </div>
+                <div class="gallery-item">
+                    <img src="Cupcakes/5.jpg" alt="Cupcake 5">
+                </div>
+                <div class="gallery-item">
+                    <img src="Cupcakes/6.jpg" alt="Cupcake 6">
+                </div>
+                <div class="gallery-item">
+                    <img src="Cupcakes/7.jpg" alt="Cupcake 7">
+                </div>
+                <div class="gallery-item">
+                    <img src="Cupcakes/8.jpg" alt="Cupcake 8">
+                </div>
+                <div class="gallery-item">
+                    <img src="Cupcakes/9.jpg" alt="Cupcake 9">
+                </div>
+                <div class="gallery-item">
+                    <img src="Cupcakes/10.jpg" alt="Cupcake 10">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- All Cakes Gallery Modal -->
+    <div id="allCakesGallery" class="gallery-modal">
+        <div class="gallery-container">
+            <button class="gallery-close-btn" onclick="closeAllCakesGallery()">&times;</button>
+
+            <div class="gallery-header">
+                <h2>All Our Cakes</h2>
+                <p>Browse our complete collection of delicious creations</p>
+            </div>
+
+            <div class="gallery-grid" id="allCakesGridContent">
+                <!-- Birthday Cakes -->
+                <div class="gallery-item">
+                    <img src="Birthday Cakes/1.jpg" alt="Birthday Cake 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="Birthday Cakes/2.jpg" alt="Birthday Cake 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="Birthday Cakes/3.jpg" alt="Birthday Cake 3">
+                </div>
+                <div class="gallery-item">
+                    <img src="Birthday Cakes/4.jpg" alt="Birthday Cake 4">
+                </div>
+                <div class="gallery-item">
+                    <img src="Birthday Cakes/5.jpg" alt="Birthday Cake 5">
+                </div>
+                <div class="gallery-item">
+                    <img src="Birthday Cakes/6.jpg" alt="Birthday Cake 6">
+                </div>
+                <div class="gallery-item">
+                    <img src="Birthday Cakes/7.jpg" alt="Birthday Cake 7">
+                </div>
+                <div class="gallery-item">
+                    <img src="Birthday Cakes/8.jpg" alt="Birthday Cake 8">
+                </div>
+                <div class="gallery-item">
+                    <img src="Birthday Cakes/9.jpg" alt="Birthday Cake 9">
+                </div>
+                <div class="gallery-item">
+                    <img src="Birthday Cakes/10.jpg" alt="Birthday Cake 10">
+                </div>
+                <!-- Wedding Cakes -->
+                <div class="gallery-item">
+                    <img src="Wedding Cakes/1.jpg" alt="Wedding Cake 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="Wedding Cakes/2.jpg" alt="Wedding Cake 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="Wedding Cakes/3.jpg" alt="Wedding Cake 3">
+                </div>
+                <div class="gallery-item">
+                    <img src="Wedding Cakes/4.jpg" alt="Wedding Cake 4">
+                </div>
+                <div class="gallery-item">
+                    <img src="Wedding Cakes/5.jpg" alt="Wedding Cake 5">
+                </div>
+                <div class="gallery-item">
+                    <img src="Wedding Cakes/6.jpg" alt="Wedding Cake 6">
+                </div>
+                <div class="gallery-item">
+                    <img src="Wedding Cakes/7.jpg" alt="Wedding Cake 7">
+                </div>
+                <div class="gallery-item">
+                    <img src="Wedding Cakes/8.jpg" alt="Wedding Cake 8">
+                </div>
+                <div class="gallery-item">
+                    <img src="Wedding Cakes/9.jpg" alt="Wedding Cake 9">
+                </div>
+                <div class="gallery-item">
+                    <img src="Wedding Cakes/10.jpg" alt="Wedding Cake 10">
+                </div>
+                <div class="gallery-item">
+                    <img src="Wedding Cakes/11.jpg" alt="Wedding Cake 11">
+                </div>
+                <div class="gallery-item">
+                    <img src="Wedding Cakes/12.jpg" alt="Wedding Cake 12">
+                </div>
+                <!-- Cupcakes -->
+                <div class="gallery-item">
+                    <img src="Cupcakes/1.jpg" alt="Cupcake 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="Cupcakes/2.jpg" alt="Cupcake 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="Cupcakes/3.jpg" alt="Cupcake 3">
+                </div>
+                <div class="gallery-item">
+                    <img src="Cupcakes/4.jpg" alt="Cupcake 4">
+                </div>
+                <div class="gallery-item">
+                    <img src="Cupcakes/5.jpg" alt="Cupcake 5">
+                </div>
+                <div class="gallery-item">
+                    <img src="Cupcakes/6.jpg" alt="Cupcake 6">
+                </div>
+                <div class="gallery-item">
+                    <img src="Cupcakes/7.jpg" alt="Cupcake 7">
+                </div>
+                <div class="gallery-item">
+                    <img src="Cupcakes/8.jpg" alt="Cupcake 8">
+                </div>
+                <div class="gallery-item">
+                    <img src="Cupcakes/9.jpg" alt="Cupcake 9">
+                </div>
+                <div class="gallery-item">
+                    <img src="Cupcakes/10.jpg" alt="Cupcake 10">
+                </div>
+                <!-- Structured Cakes -->
+                <div class="gallery-item">
+                    <img src="Structured Cakes/1.jpg" alt="Structured Cake 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="Structured Cakes/2.jpg" alt="Structured Cake 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="Structured Cakes/3.jpg" alt="Structured Cake 3">
+                </div>
+                <div class="gallery-item">
+                    <img src="Structured Cakes/4.jpg" alt="Structured Cake 4">
+                </div>
+                <div class="gallery-item">
+                    <img src="Structured Cakes/5.jpg" alt="Structured Cake 5">
+                </div>
+                <div class="gallery-item">
+                    <img src="Structured Cakes/6.jpg" alt="Structured Cake 6">
+                </div>
+                <div class="gallery-item">
+                    <img src="Structured Cakes/7.jpg" alt="Structured Cake 7">
+                </div>
+                <div class="gallery-item">
+                    <img src="Structured Cakes/8.jpg" alt="Structured Cake 8">
+                </div>
+                <div class="gallery-item">
+                    <img src="Structured Cakes/9.jpg" alt="Structured Cake 9">
+                </div>
+                <div class="gallery-item">
+                    <img src="Structured Cakes/10.jpg" alt="Structured Cake 10">
+                </div>
+                <div class="gallery-item">
+                    <img src="Structured Cakes/11.jpg" alt="Structured Cake 11">
+                </div>
+                <!-- Custom Cakes -->
+                 <div class="gallery-item">
+                    <img src="Custom Cakes/1.jpg" alt="Custom Cake 1">
+                </div>
+                <div class="gallery-item">
+                    <img src="Custom Cakes/2.jpg" alt="Custom Cake 2">
+                </div>
+                <div class="gallery-item">
+                    <img src="Custom Cakes/3.jpg" alt="Custom Cake 3">
+                </div>
+                <div class="gallery-item">
+                    <img src="Custom Cakes/4.jpg" alt="Custom Cake 4">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button id="ownerAdminToggle" class="owner-admin-toggle owner-only" type="button" onclick="toggleOwnerAdminPanel()">
+        <i class="fas fa-user-shield"></i> Admin
+    </button>
+
+    <aside id="ownerAdminPanel" class="owner-admin-panel" aria-hidden="true">
+        <div class="owner-admin-header">
+            <h3>Owner Admin</h3>
+            <button type="button" class="owner-admin-close" onclick="toggleOwnerAdminPanel(false)" aria-label="Close admin panel">&times;</button>
+        </div>
+        <p class="owner-admin-note">Add a new photo to any category. Photos are saved in this browser.</p>
+        <label for="adminCategorySelect">Category</label>
+        <select id="adminCategorySelect">
+            <option value="birthday">Birthday Cakes</option>
+            <option value="wedding">Wedding Cakes</option>
+            <option value="cupcakes">Cupcakes</option>
+            <option value="custom">Custom Cakes</option>
+            <option value="structured">Structured Cakes</option>
+        </select>
+
+        <label for="adminPhotoInput">Choose Image</label>
+        <input id="adminPhotoInput" type="file" accept="image/*">
+
+        <button type="button" class="btn btn-primary" onclick="addPhotoToSelectedCategory()">
+            <i class="fas fa-upload"></i> Add Photo
+        </button>
+
+        <div class="admin-uploaded-wrap">
+            <h4>Uploaded In This Category</h4>
+            <div id="adminUploadedList" class="admin-uploaded-list"></div>
+        </div>
+
+        <div class="admin-order-wrap">
+            <h4><i class="fas fa-receipt"></i> Custom Cake Orders</h4>
+            <p class="admin-order-note">Total orders: <strong id="adminOrderCount">0</strong></p>
+            <div id="adminOrderList" class="admin-order-list"></div>
+        </div>
+
+        <div class="admin-feedback-wrap">
+            <h4><i class="fas fa-comments"></i> Customer Feedback</h4>
+            <p class="admin-order-note">Total feedback: <strong id="adminFeedbackCount">0</strong></p>
+            <div id="adminFeedbackList" class="admin-feedback-list"></div>
+        </div>
+    </aside>
+
+    <script src="script.js"></script>
+    <script>
+        const OWNER_MODE_STORAGE_KEY = 'saOwnerMode';
+        const OWNER_ADDED_IMAGES_KEY = 'saAddedCategoryImages';
+        const OWNER_PIN = 'SA2026';
+        const ORDER_LIST_KEY = 'saCakeOrderList';
+        const ORDER_RECEIVER_EMAIL = 'ayeshachamali4@gmail.com';
+
+        const categoryConfig = {
+            birthday: { folder: 'Birthday Cakes', gridId: 'birthdayGrid', altPrefix: 'Birthday Cake' },
+            wedding: { folder: 'Wedding Cakes', gridId: 'weddingGrid', altPrefix: 'Wedding Cake' },
+            cupcakes: { folder: 'Cupcakes', gridId: 'cupcakesGrid', altPrefix: 'Cupcake' },
+            custom: { folder: 'Custom Cakes', gridId: 'customCakesGrid', altPrefix: 'Custom Cake' },
+            structured: { folder: 'Structured Cakes', gridId: 'structuredGrid', altPrefix: 'Structured Cake' }
+        };
+
+        const baseCategoryImages = {};
+
+        function getAddedCategoryImages() {
+            const raw = localStorage.getItem(OWNER_ADDED_IMAGES_KEY);
+            if (!raw) return {};
+            try {
+                const parsed = JSON.parse(raw);
+                return parsed && typeof parsed === 'object' ? parsed : {};
+            } catch (error) {
+                console.error('Failed to parse saved category photos', error);
+                return {};
+            }
+        }
+
+        function saveAddedCategoryImages(imagesMap) {
+            localStorage.setItem(OWNER_ADDED_IMAGES_KEY, JSON.stringify(imagesMap));
+        }
+
+        function initializeBaseCategoryImages() {
+            Object.entries(categoryConfig).forEach(([key, config]) => {
+                const grid = document.getElementById(config.gridId);
+                if (!grid) return;
+                baseCategoryImages[key] = Array.from(grid.querySelectorAll('img')).map(img => img.getAttribute('src')).filter(Boolean);
+            });
+        }
+
+        function getCategoryImages(categoryKey) {
+            const defaults = baseCategoryImages[categoryKey] || [];
+            const added = getAddedCategoryImages()[categoryKey] || [];
+            return [...defaults, ...added];
+        }
+
+        function getAddedImagesForCategory(categoryKey) {
+            const map = getAddedCategoryImages();
+            const images = map[categoryKey];
+            return Array.isArray(images) ? images : [];
+        }
+
+        function renderGridFromImages(grid, images, altPrefix) {
+            if (!grid) return;
+            grid.innerHTML = '';
+            images.forEach((src, index) => {
+                const item = document.createElement('div');
+                item.className = 'gallery-item';
+
+                const img = document.createElement('img');
+                img.src = src;
+                img.alt = `${altPrefix} ${index + 1}`;
+
+                item.appendChild(img);
+                grid.appendChild(item);
+            });
+        }
+
+        function renderCategoryGallery(categoryKey) {
+            const config = categoryConfig[categoryKey];
+            if (!config) return;
+            const grid = document.getElementById(config.gridId);
+            renderGridFromImages(grid, getCategoryImages(categoryKey), config.altPrefix);
+        }
+
+        function renderAllCakesGalleryGrid() {
+            const allGrid = document.getElementById('allCakesGridContent');
+            if (!allGrid) return;
+
+            allGrid.innerHTML = '';
+
+            Object.keys(categoryConfig).forEach(categoryKey => {
+                const config = categoryConfig[categoryKey];
+                const images = getCategoryImages(categoryKey);
+                images.forEach((src, index) => {
+                    const item = document.createElement('div');
+                    item.className = 'gallery-item';
+
+                    const img = document.createElement('img');
+                    img.src = src;
+                    img.alt = `${config.altPrefix} ${index + 1}`;
+
+                    item.appendChild(img);
+                    allGrid.appendChild(item);
+                });
+            });
+        }
+
+        function refreshAllGalleryViews() {
+            Object.keys(categoryConfig).forEach(renderCategoryGallery);
+            renderAllCakesGalleryGrid();
+        }
+
+        function isOwnerMode() {
+            return sessionStorage.getItem(OWNER_MODE_STORAGE_KEY) === 'true';
+        }
+
+        function initializeOwnerMode() {
+            const params = new URLSearchParams(window.location.search);
+            if (params.get('owner') === '1' && !isOwnerMode()) {
+                const enteredPin = window.prompt('Owner PIN');
+                if (enteredPin === OWNER_PIN) {
+                    sessionStorage.setItem(OWNER_MODE_STORAGE_KEY, 'true');
+                }
+            }
+
+            document.body.classList.toggle('owner-mode', isOwnerMode());
+
+            const categorySelect = document.getElementById('adminCategorySelect');
+            if (categorySelect) {
+                categorySelect.addEventListener('change', renderAdminUploadedList);
+            }
+
+            if (isOwnerMode()) {
+                renderAdminUploadedList();
+                renderOrderList();
+                renderAdminFeedbackList();
+            }
+        }
+
+        function toggleOwnerAdminPanel(forceOpen) {
+            if (!isOwnerMode()) return;
+            const panel = document.getElementById('ownerAdminPanel');
+            if (!panel) return;
+
+            const shouldOpen = typeof forceOpen === 'boolean' ? forceOpen : !panel.classList.contains('active');
+            panel.classList.toggle('active', shouldOpen);
+            panel.setAttribute('aria-hidden', shouldOpen ? 'false' : 'true');
+        }
+
+        function openOwnerAdmin(categoryKey) {
+            if (!isOwnerMode()) return;
+            const select = document.getElementById('adminCategorySelect');
+            if (select && categoryConfig[categoryKey]) {
+                select.value = categoryKey;
+            }
+            renderAdminUploadedList();
+            renderAdminFeedbackList();
+            toggleOwnerAdminPanel(true);
+        }
+
+        function renderAdminUploadedList() {
+            const select = document.getElementById('adminCategorySelect');
+            const container = document.getElementById('adminUploadedList');
+            if (!select || !container || !isOwnerMode()) return;
+
+            const categoryKey = select.value;
+            const addedImages = getAddedImagesForCategory(categoryKey);
+
+            container.innerHTML = '';
+
+            if (!addedImages.length) {
+                const empty = document.createElement('p');
+                empty.className = 'admin-upload-empty';
+                empty.textContent = 'No uploaded photos yet for this category.';
+                container.appendChild(empty);
+                return;
+            }
+
+            addedImages.forEach((src, index) => {
+                const row = document.createElement('div');
+                row.className = 'admin-upload-row';
+
+                const thumb = document.createElement('img');
+                thumb.src = src;
+                thumb.alt = `Uploaded photo ${index + 1}`;
+
+                const actions = document.createElement('div');
+                actions.className = 'admin-upload-actions';
+
+                const upBtn = document.createElement('button');
+                upBtn.type = 'button';
+                upBtn.className = 'admin-mini-btn';
+                upBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+                upBtn.title = 'Move up';
+                upBtn.disabled = index === 0;
+                upBtn.addEventListener('click', () => moveUploadedPhoto(index, -1));
+
+                const downBtn = document.createElement('button');
+                downBtn.type = 'button';
+                downBtn.className = 'admin-mini-btn';
+                downBtn.innerHTML = '<i class="fas fa-arrow-down"></i>';
+                downBtn.title = 'Move down';
+                downBtn.disabled = index === addedImages.length - 1;
+                downBtn.addEventListener('click', () => moveUploadedPhoto(index, 1));
+
+                const removeBtn = document.createElement('button');
+                removeBtn.type = 'button';
+                removeBtn.className = 'admin-mini-btn danger';
+                removeBtn.innerHTML = '<i class="fas fa-trash"></i>';
+                removeBtn.title = 'Remove photo';
+                removeBtn.addEventListener('click', () => removeUploadedPhoto(index));
+
+                actions.appendChild(upBtn);
+                actions.appendChild(downBtn);
+                actions.appendChild(removeBtn);
+
+                row.appendChild(thumb);
+                row.appendChild(actions);
+                container.appendChild(row);
+            });
+        }
+
+        function moveUploadedPhoto(currentIndex, direction) {
+            if (!isOwnerMode()) return;
+            const select = document.getElementById('adminCategorySelect');
+            if (!select) return;
+
+            const categoryKey = select.value;
+            const imagesMap = getAddedCategoryImages();
+            const list = Array.isArray(imagesMap[categoryKey]) ? imagesMap[categoryKey] : [];
+            const nextIndex = currentIndex + direction;
+
+            if (nextIndex < 0 || nextIndex >= list.length) return;
+
+            [list[currentIndex], list[nextIndex]] = [list[nextIndex], list[currentIndex]];
+            imagesMap[categoryKey] = list;
+            saveAddedCategoryImages(imagesMap);
+            refreshAllGalleryViews();
+            updateCakeCardImages();
+            renderAdminUploadedList();
+        }
+
+        function removeUploadedPhoto(indexToRemove) {
+            if (!isOwnerMode()) return;
+            const select = document.getElementById('adminCategorySelect');
+            if (!select) return;
+
+            const categoryKey = select.value;
+            const imagesMap = getAddedCategoryImages();
+            const list = Array.isArray(imagesMap[categoryKey]) ? imagesMap[categoryKey] : [];
+
+            if (indexToRemove < 0 || indexToRemove >= list.length) return;
+
+            list.splice(indexToRemove, 1);
+            imagesMap[categoryKey] = list;
+            saveAddedCategoryImages(imagesMap);
+            refreshAllGalleryViews();
+            updateCakeCardImages();
+            renderAdminUploadedList();
+        }
+
+        function addPhotoToSelectedCategory() {
+            if (!isOwnerMode()) return;
+            const select = document.getElementById('adminCategorySelect');
+            const input = document.getElementById('adminPhotoInput');
+
+            if (!select || !input || !input.files || !input.files.length) {
+                alert('Choose an image first.');
+                return;
+            }
+
+            const categoryKey = select.value;
+            if (!categoryConfig[categoryKey]) {
+                alert('Invalid category selected.');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function (event) {
+                const result = event.target && event.target.result;
+                if (!result || typeof result !== 'string') {
+                    alert('Could not read this image. Try another one.');
+                    return;
+                }
+
+                const imagesMap = getAddedCategoryImages();
+                imagesMap[categoryKey] = imagesMap[categoryKey] || [];
+                imagesMap[categoryKey].push(result);
+                saveAddedCategoryImages(imagesMap);
+                refreshAllGalleryViews();
+                updateCakeCardImages();
+                renderAdminUploadedList();
+
+                input.value = '';
+                alert('Photo added successfully.');
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+
+        function getOrderList() {
+            const raw = localStorage.getItem(ORDER_LIST_KEY);
+            if (!raw) return [];
+
+            try {
+                const parsed = JSON.parse(raw);
+                return Array.isArray(parsed) ? parsed : [];
+            } catch (error) {
+                console.error('Failed to parse saved orders', error);
+                return [];
+            }
+        }
+
+        function saveOrderList(orders) {
+            localStorage.setItem(ORDER_LIST_KEY, JSON.stringify(orders));
+        }
+
+        function renderOrderList() {
+            const orders = getOrderList();
+            const countEl = document.getElementById('adminOrderCount');
+            const listEl = document.getElementById('adminOrderList');
+
+            if (countEl) {
+                countEl.textContent = String(orders.length);
+            }
+
+            if (!listEl || !isOwnerMode()) return;
+
+            listEl.innerHTML = '';
+
+            if (!orders.length) {
+                const empty = document.createElement('p');
+                empty.className = 'admin-upload-empty';
+                empty.textContent = 'No custom cake orders submitted yet.';
+                listEl.appendChild(empty);
+                return;
+            }
+
+            orders.slice().reverse().forEach((order, reversedIndex) => {
+                const card = document.createElement('article');
+                card.className = 'admin-order-item';
+
+                const orderIndex = document.createElement('span');
+                orderIndex.className = 'admin-order-index';
+                orderIndex.textContent = `#${orders.length - reversedIndex}`;
+
+                const photo = document.createElement('img');
+                photo.className = 'admin-order-photo';
+                photo.src = order.photo || 'page photos/bg photo.jpg';
+                photo.alt = `${order.name || 'Customer'} order photo`;
+
+                const photoWrap = document.createElement('div');
+                photoWrap.className = 'admin-order-photo-wrap';
+                photoWrap.appendChild(photo);
+                photoWrap.appendChild(orderIndex);
+
+                const content = document.createElement('div');
+                content.className = 'admin-order-content';
+
+                const header = document.createElement('div');
+                header.className = 'admin-order-header';
+
+                const name = document.createElement('h5');
+                name.textContent = order.name || 'Anonymous';
+
+                const date = document.createElement('span');
+                date.className = 'admin-order-date';
+                const createdAt = order.createdAt ? new Date(order.createdAt) : new Date();
+                date.textContent = createdAt.toLocaleString();
+
+                const contactRow = document.createElement('div');
+                contactRow.className = 'admin-order-contact-row';
+
+                const phoneRow = document.createElement('p');
+                phoneRow.className = 'admin-order-phone';
+                phoneRow.innerHTML = `<i class="fas fa-phone"></i> ${order.phone || '-'}`;
+
+                const detailsRow = document.createElement('p');
+                detailsRow.className = 'admin-order-details';
+                detailsRow.textContent = order.details || 'No order details provided.';
+
+                const rawWhatsApp = (order.whatsapp || '').trim();
+                const digitsOnly = rawWhatsApp.replace(/[^\d]/g, '');
+
+                if (digitsOnly.length >= 8) {
+                    const waLink = document.createElement('a');
+                    waLink.className = 'admin-order-wa-link';
+                    waLink.href = `https://wa.me/${digitsOnly}`;
+                    waLink.target = '_blank';
+                    waLink.rel = 'noopener noreferrer';
+                    waLink.innerHTML = `<i class="fab fa-whatsapp"></i> ${rawWhatsApp}`;
+                    contactRow.appendChild(waLink);
+                } else {
+                    const waText = document.createElement('p');
+                    waText.className = 'admin-order-wa-text';
+                    waText.innerHTML = `<i class="fab fa-whatsapp"></i> ${rawWhatsApp || '-'}`;
+                    contactRow.appendChild(waText);
+                }
+
+                header.appendChild(name);
+                header.appendChild(date);
+
+                content.appendChild(header);
+                content.appendChild(phoneRow);
+                content.appendChild(detailsRow);
+                content.appendChild(contactRow);
+
+                card.appendChild(photoWrap);
+                card.appendChild(content);
+                listEl.appendChild(card);
+            });
+        }
+
+        function openOrderModal() {
+            const modal = document.getElementById('orderModal');
+            if (!modal) return;
+
+            modal.classList.add('active');
+            modal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeOrderModal() {
+            const modal = document.getElementById('orderModal');
+            const statusEl = document.getElementById('orderFormStatus');
+            if (!modal) return;
+
+            modal.classList.remove('active');
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = 'auto';
+
+            if (statusEl) {
+                statusEl.textContent = '';
+            }
+        }
+
+        function initializeOrderForm() {
+            const form = document.getElementById('orderForm');
+            const statusEl = document.getElementById('orderFormStatus');
+            const photoInput = document.getElementById('orderPhoto');
+            const nameInput = document.getElementById('orderName');
+            const phoneInput = document.getElementById('orderPhone');
+            const detailsInput = document.getElementById('orderDetails');
+            const whatsappInput = document.getElementById('orderWhatsapp');
+
+            if (!form || !statusEl || !photoInput || !nameInput || !phoneInput || !detailsInput || !whatsappInput) return;
+
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                const file = photoInput.files && photoInput.files[0];
+                const nameValue = nameInput.value.trim();
+                const phoneValue = phoneInput.value.trim();
+                const detailsValue = detailsInput.value.trim();
+                const whatsappValue = whatsappInput.value.trim();
+
+                if (!nameValue || !phoneValue || !detailsValue) {
+                    statusEl.textContent = 'Please fill in name, contact number, and order details.';
+                    statusEl.style.color = '#dc3545';
+                    return;
+                }
+
+                const sendOrderEmail = (photoName) => {
+                    const subject = encodeURIComponent(`New Cake Order - ${nameValue}`);
+                    const body = encodeURIComponent(
+                        `Customer name: ${nameValue}\n` +
+                        `Contact number: ${phoneValue}\n` +
+                        `WhatsApp: ${whatsappValue || 'Not provided'}\n` +
+                        `Order details: ${detailsValue}\n` +
+                        `Photo: ${photoName || 'Not attached'}\n\n` +
+                        `Note: If a photo is selected, please attach it manually before sending.`
+                    );
+                    window.location.href = `mailto:${ORDER_RECEIVER_EMAIL}?subject=${subject}&body=${body}`;
+                };
+
+                const finalizeOrder = (photoDataUrl) => {
+                    const orders = getOrderList();
+                    orders.push({
+                        name: nameValue,
+                        phone: phoneValue,
+                        details: detailsValue,
+                        whatsapp: whatsappValue,
+                        photo: photoDataUrl,
+                        createdAt: Date.now()
+                    });
+
+                    saveOrderList(orders);
+                    renderOrderList();
+                    sendOrderEmail(file ? file.name : 'Not attached');
+
+                    statusEl.textContent = 'Order submitted and email draft opened.';
+                    statusEl.style.color = '#2e7d32';
+                    form.reset();
+
+                    setTimeout(() => {
+                        closeOrderModal();
+                    }, 900);
+                };
+
+                if (!file) {
+                    finalizeOrder('');
+                    return;
+                }
+
+                const reader = new FileReader();
+                reader.onload = function (loadEvent) {
+                    const result = loadEvent.target && loadEvent.target.result;
+                    if (!result || typeof result !== 'string') {
+                        statusEl.textContent = 'Could not read the selected photo. Please try another file.';
+                        statusEl.style.color = '#dc3545';
+                        return;
+                    }
+
+                    finalizeOrder(result);
+                };
+
+                reader.readAsDataURL(file);
+            });
+        }
+
+        function openBirthdayGallery() {
+            document.getElementById('birthdayGallery').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBirthdayGallery() {
+            document.getElementById('birthdayGallery').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function openWeddingGallery() {
+            document.getElementById('weddingGallery').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeWeddingGallery() {
+            document.getElementById('weddingGallery').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function openStructuredGallery() {
+            document.getElementById('structuredGallery').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeStructuredGallery() {
+            document.getElementById('structuredGallery').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function openCupcakesGallery() {
+            document.getElementById('cupcakesGallery').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCupcakesGallery() {
+            document.getElementById('cupcakesGallery').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function openCustomCakesGallery() {
+            document.getElementById('customCakesGallery').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCustomCakesGallery() {
+            document.getElementById('customCakesGallery').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+
+        function openAllCakesGallery() {
+            document.getElementById('allCakesGallery').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeAllCakesGallery() {
+            document.getElementById('allCakesGallery').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        const getFeedbackList = () => {
+            const stored = localStorage.getItem('saFeedbackList');
+            if (!stored) return [];
+            try {
+                const parsed = JSON.parse(stored);
+                return Array.isArray(parsed) ? parsed : [];
+            } catch (err) {
+                console.error('Failed to parse saved feedback list', err);
+                return [];
+            }
+        };
+
+        const saveFeedbackList = (list) => {
+            localStorage.setItem('saFeedbackList', JSON.stringify(list));
+            localStorage.setItem('saFeedbackCount', String(list.length));
+        };
+
+        function renderAdminFeedbackList() {
+            const list = getFeedbackList();
+            const countEl = document.getElementById('adminFeedbackCount');
+            const container = document.getElementById('adminFeedbackList');
+
+            if (countEl) {
+                countEl.textContent = String(list.length);
+            }
+
+            if (!container || !isOwnerMode()) return;
+
+            container.innerHTML = '';
+
+            if (!list.length) {
+                const empty = document.createElement('p');
+                empty.className = 'admin-upload-empty';
+                empty.textContent = 'No feedback found.';
+                container.appendChild(empty);
+                return;
+            }
+
+            list.slice().reverse().forEach((entry, reversedIndex) => {
+                const originalIndex = list.length - 1 - reversedIndex;
+
+                const card = document.createElement('article');
+                card.className = 'admin-feedback-item';
+
+                const header = document.createElement('div');
+                header.className = 'admin-feedback-header';
+
+                const user = document.createElement('h5');
+                user.textContent = (entry.name && entry.name.trim()) ? entry.name.trim() : 'Anonymous';
+
+                const deleteBtn = document.createElement('button');
+                deleteBtn.type = 'button';
+                deleteBtn.className = 'admin-feedback-delete';
+                deleteBtn.innerHTML = '<i class="fas fa-trash"></i> Delete';
+                deleteBtn.addEventListener('click', function () {
+                    deleteFeedbackByIndex(originalIndex);
+                });
+
+                header.appendChild(user);
+                header.appendChild(deleteBtn);
+
+                const message = document.createElement('p');
+                message.className = 'admin-feedback-message';
+                message.textContent = (entry.message && entry.message.trim()) ? entry.message.trim() : 'No feedback message provided.';
+
+                card.appendChild(header);
+                card.appendChild(message);
+                container.appendChild(card);
+            });
+        }
+
+        function deleteFeedbackByIndex(indexToDelete) {
+            if (!isOwnerMode()) return;
+
+            const list = getFeedbackList();
+            if (indexToDelete < 0 || indexToDelete >= list.length) return;
+
+            const confirmed = window.confirm('Delete this feedback entry?');
+            if (!confirmed) return;
+
+            list.splice(indexToDelete, 1);
+            saveFeedbackList(list);
+            renderFeedbackList(list);
+            renderAdminFeedbackList();
+            updateFeedbackCount();
+            updateCakeImagePlaceholder();
+        }
+
+        const renderFeedbackList = (list) => {
+            const container = document.getElementById('feedbackList');
+            if (!container) return;
+            container.innerHTML = '';
+
+            if (!list.length) {
+                const empty = document.createElement('p');
+                empty.className = 'feedback-empty';
+                empty.textContent = 'No feedback yet. Be the first to share!';
+                container.appendChild(empty);
+                return;
+            }
+
+            list.slice().reverse().forEach((entry, reversedIndex) => {
+                const originalIndex = list.length - 1 - reversedIndex;
+                const item = document.createElement('div');
+                item.className = 'feedback-list-item';
+
+                // Image section
+                if (entry.image) {
+                    const imgContainer = document.createElement('div');
+                    imgContainer.className = 'feedback-item-image';
+                    imgContainer.style.backgroundImage = `url('${entry.image}')`;
+                    item.appendChild(imgContainer);
+                }
+
+                const content = document.createElement('div');
+                content.className = 'feedback-item-content';
+
+                const header = document.createElement('div');
+                header.className = 'feedback-list-header';
+
+                const nameSection = document.createElement('div');
+                nameSection.className = 'feedback-name-section';
+
+                const nameIcon = document.createElement('i');
+                nameIcon.className = 'fas fa-user-circle';
+
+                const name = document.createElement('span');
+                name.className = 'feedback-name';
+                name.textContent = entry.name || 'Anonymous';
+
+                nameSection.appendChild(nameIcon);
+                nameSection.appendChild(name);
+
+                const headerRight = document.createElement('div');
+                headerRight.className = 'feedback-header-right';
+
+                const time = document.createElement('span');
+                time.className = 'feedback-time';
+                const date = entry.timestamp ? new Date(entry.timestamp) : new Date();
+                time.innerHTML = `<i class="fas fa-calendar-alt"></i> ${date.toLocaleDateString()}`;
+
+                headerRight.appendChild(time);
+
+                if (isOwnerMode()) {
+                    const deleteBtn = document.createElement('button');
+                    deleteBtn.type = 'button';
+                    deleteBtn.className = 'feedback-delete-btn owner-only';
+                    deleteBtn.innerHTML = '<i class="fas fa-trash"></i> Delete';
+                    deleteBtn.title = 'Delete feedback';
+                    deleteBtn.addEventListener('click', function (event) {
+                        event.stopPropagation();
+                        deleteFeedbackByIndex(originalIndex);
+                    });
+                    headerRight.appendChild(deleteBtn);
+                }
+
+                header.appendChild(nameSection);
+                header.appendChild(headerRight);
+
+                const message = document.createElement('p');
+                message.className = 'feedback-message';
+                message.innerHTML = `<i class="fas fa-quote-left"></i> ${entry.message || ''}`;
+
+                content.appendChild(header);
+                content.appendChild(message);
+                item.appendChild(content);
+
+
+                container.appendChild(item);
+            });
+
+            // Manage scroll hint visibility
+            const scrollHint = document.querySelector('.scroll-hint');
+            const feedbackListEl = document.getElementById('feedbackList');
+
+            if (scrollHint && feedbackListEl) {
+                // Hide hint if less than 4 items or if content doesn't overflow
+                if (list.length < 4 || feedbackListEl.scrollHeight <= feedbackListEl.clientHeight) {
+                    scrollHint.style.display = 'none';
+                } else {
+                    scrollHint.style.display = 'flex';
+
+                    // Hide hint when user scrolls
+                    feedbackListEl.addEventListener('scroll', function () {
+                        if (this.scrollTop > 20) {
+                            scrollHint.style.opacity = '0';
+                            scrollHint.style.transform = 'translateY(-10px)';
+                        } else {
+                            scrollHint.style.opacity = '1';
+                            scrollHint.style.transform = 'translateY(0)';
+                        }
+                    });
+                }
+            }
+        };
+
+        // Show only feedback list (for cake image)
+        function openFeedbackList() {
+            const list = getFeedbackList();
+            const modal = document.getElementById('feedbackModal');
+            const previewSection = document.getElementById('feedbackPreviewSection');
+            const listSection = document.getElementById('feedbackListSection');
+            const imgEl = document.getElementById('feedbackPreviewImage');
+
+            previewSection.style.display = 'none';
+            listSection.style.display = 'block';
+            imgEl.style.display = 'none';
+
+            renderFeedbackList(list);
+            modal.classList.add('active');
+            modal.setAttribute('aria-hidden', 'false');
+        }
+
+        // Feedback preview modal (for stats badge)
+        function openFeedbackPreview() {
+            const list = getFeedbackList();
+            const savedLatest = list[list.length - 1] || (() => {
+                const legacy = localStorage.getItem('saFeedback');
+                try { return legacy ? JSON.parse(legacy) : null; } catch { return null; }
+            })();
+            const modal = document.getElementById('feedbackModal');
+            const titleEl = document.getElementById('feedbackModalTitle');
+            const textEl = document.getElementById('feedbackModalText');
+            const imgEl = document.getElementById('feedbackPreviewImage');
+
+            if (savedLatest) {
+                titleEl.textContent = savedLatest.name || 'Anonymous';
+                textEl.textContent = savedLatest.message || '';
+                if (savedLatest.image) {
+                    imgEl.style.backgroundImage = `linear-gradient(135deg, rgba(233,30,99,0.12), rgba(255,111,97,0.12)), url('${savedLatest.image}')`;
+                }
+            } else {
+                titleEl.textContent = 'No feedback yet';
+                textEl.textContent = '“Submit feedback to see it here.”';
+                imgEl.style.backgroundImage = "linear-gradient(135deg, rgba(233,30,99,0.12), rgba(255,111,97,0.12)), url('page photos/bg photo.jpg')";
+            }
+
+            renderFeedbackList(list);
+            modal.classList.add('active');
+            modal.setAttribute('aria-hidden', 'false');
+        }
+
+        function closeFeedbackPreview() {
+            const modal = document.getElementById('feedbackModal');
+            modal.classList.remove('active');
+            modal.setAttribute('aria-hidden', 'true');
+        }
+
+        function showFeedbackDetail(entry) {
+            const modal = document.getElementById('feedbackDetailModal');
+            const nameEl = document.getElementById('detailName');
+            const dateEl = document.getElementById('detailDate');
+            const messageEl = document.getElementById('detailMessage');
+            const imageEl = document.getElementById('detailImage');
+
+            nameEl.textContent = entry.name || 'Anonymous';
+            messageEl.textContent = entry.message || '';
+            
+            if (entry.timestamp) {
+                const date = new Date(entry.timestamp);
+                dateEl.textContent = date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+            } else {
+                dateEl.textContent = '';
+            }
+
+            if (entry.image) {
+                imageEl.style.backgroundImage = `url('${entry.image}')`;
+            } else {
+                imageEl.style.backgroundImage = "url('page photos/bg photo.jpg')";
+            }
+
+            modal.classList.add('active');
+            modal.setAttribute('aria-hidden', 'false');
+        }
+
+        function closeFeedbackDetail() {
+            const modal = document.getElementById('feedbackDetailModal');
+            modal.classList.remove('active');
+            modal.setAttribute('aria-hidden', 'true');
+        }
+
+        function updateFeedbackCount() {
+            const listCount = getFeedbackList().length;
+            const legacyCount = parseInt(localStorage.getItem('saFeedbackCount') || '0', 10);
+            const count = listCount || legacyCount;
+            const el = document.getElementById('statCount');
+            if (!el) return;
+            if (count > 0) {
+                el.textContent = count;
+            }
+        }
+
+        function updateCakeImagePlaceholder() {
+            const list = getFeedbackList();
+            const latestFeedback = list[list.length - 1];
+            const placeholder = document.querySelector('.cake-image-placeholder');
+            
+            if (latestFeedback && latestFeedback.image && placeholder) {
+                placeholder.style.backgroundImage = `url('${latestFeedback.image}')`;
+                placeholder.style.backgroundSize = 'cover';
+                placeholder.style.backgroundPosition = 'center';
+                // Remove the cake icon
+                const icon = placeholder.querySelector('i.fa-cake-candles');
+                if (icon) {
+                    icon.remove();
+                }
+            }
+        }
+
+        // Update cake card images with latest available image in each category
+        function updateCakeCardImages() {
+            const cakeData = [
+                { key: 'birthday', index: 0 },
+                { key: 'wedding', index: 1 },
+                { key: 'cupcakes', index: 2 },
+                { key: 'custom', index: 3 },
+                { key: 'structured', index: 4 }
+            ];
+
+            const cakeCards = document.querySelectorAll('.cakes-grid .cake-card');
+            
+            cakeData.forEach(cake => {
+                const card = cakeCards[cake.index];
+                if (card) {
+                    const img = card.querySelector('img');
+                    if (img) {
+                        const config = categoryConfig[cake.key];
+                        const images = getCategoryImages(cake.key);
+                        if (images.length) {
+                            img.src = images[images.length - 1];
+                            img.alt = `Latest ${config.folder}`;
+                        }
+                    }
+                }
+            });
+        }
+
+        // Init on load
+        initializeBaseCategoryImages();
+        refreshAllGalleryViews();
+        initializeOwnerMode();
+        initializeOrderForm();
+        updateFeedbackCount();
+        updateCakeImagePlaceholder();
+        updateCakeCardImages();
+        renderOrderList();
+        renderAdminFeedbackList();
+
+        // Close gallery when clicking outside
+        document.addEventListener('click', function (event) {
+            const birthdayGallery = document.getElementById('birthdayGallery');
+            const weddingGallery = document.getElementById('weddingGallery');
+            const structuredGallery = document.getElementById('structuredGallery');
+            const cupcakesGallery = document.getElementById('cupcakesGallery');
+            const customCakesGallery = document.getElementById('customCakesGallery');
+            const allCakesGallery = document.getElementById('allCakesGallery');
+
+            if (event.target === birthdayGallery) {
+                closeBirthdayGallery();
+            }
+            if (event.target === weddingGallery) {
+                closeWeddingGallery();
+            }
+            if (event.target === structuredGallery) {
+                closeStructuredGallery();
+            }
+            if (event.target === cupcakesGallery) {
+                closeCupcakesGallery();
+            }
+            if (event.target === customCakesGallery) {
+                closeCustomCakesGallery();
+            }
+            if (event.target === allCakesGallery) {
+                closeAllCakesGallery();
+            }
+        });
+
+        // Close gallery on Escape key
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Escape') {
+                // Review card interaction
+                function toggleReviewModal(card) {
+                    const reviewText = card.querySelector('.review-text');
+                    const reviewContent = card.querySelector('.review-content');
+
+                    // Create or toggle modal effect
+                    if (card.classList.contains('expanded')) {
+                        card.classList.remove('expanded');
+                    } else {
+                        card.classList.add('expanded');
+                    }
+                }
+
+                closeBirthdayGallery();
+                closeWeddingGallery();
+                closeStructuredGallery();
+                closeCupcakesGallery();
+                closeCustomCakesGallery();
+                closeAllCakesGallery();
+                closeOrderModal();
+                toggleOwnerAdminPanel(false);
+            }
+        });
+    </script>
+</body>
+
+</html>
