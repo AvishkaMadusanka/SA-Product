@@ -1,0 +1,74 @@
+[
+  {
+    "id": "b1",
+    "title": "Classic Birthday Celebration Cake",
+    "category": "birthday",
+    "price": 4500,
+    "image": "assets/images/cakes/birthday/1.jpg",
+    "description": "Rich layers with handcrafted birthday decorations.",
+    "featured": true
+  },
+  {
+    "id": "b2",
+    "title": "Choco Drizzle Birthday Delight",
+    "category": "birthday",
+    "price": 5200,
+    "image": "assets/images/cakes/birthday/2.jpg",
+    "description": "Premium chocolate cake with silky drip glaze.",
+    "featured": true
+  },
+  {
+    "id": "w1",
+    "title": "Royal Tiered Wedding Cake",
+    "category": "wedding",
+    "price": 18500,
+    "image": "assets/images/cakes/wedding/1.jpg",
+    "description": "Elegant multi-tier wedding showstopper with delicate fondant florals.",
+    "featured": true
+  },
+  {
+    "id": "c1",
+    "title": "Rainbow Swirl Cupcake Box",
+    "category": "cupcakes",
+    "price": 2800,
+    "image": "assets/images/cakes/cupcakes/1.jpg",
+    "description": "Box of 6 artisan cupcakes with fresh buttercream frosting.",
+    "featured": true
+  },
+  {
+    "id": "s1",
+    "title": "Sculpted Fantasy Structured Cake",
+    "category": "structured",
+    "price": 12000,
+    "image": "assets/images/cakes/structured/1.jpg",
+    "description": "Architecturally crafted novelty cake tailored for milestone events.",
+    "featured": true
+  },
+  {
+    "id": "cu1",
+    "title": "Bespoke Themed Custom Cake",
+    "category": "custom",
+    "price": 8500,
+    "image": "assets/images/cakes/custom/1.jpg",
+    "description": "Fully personalized cake tailored to your dream concept and theme.",
+    "featured": true
+  },
+  {
+    "id": "h1",
+    "title": "Rustic Oat & Wild Berry Healthy Cake",
+    "category": "healthy",
+    "price": 6200,
+    "image": "assets/images/cakes/healthy/1.jpg",
+    "description": "Gluten-free whole oat sponge topped with fresh raspberries, blueberries, and raw honey cream.",
+    "featured": true
+  },
+  {
+    "id": "h2",
+    "title": "Organic Raw Matcha Pistachio Cake",
+    "category": "healthy",
+    "price": 6800,
+    "image": "assets/images/cakes/healthy/2.jpg",
+    "description": "100% vegan, refined sugar-free raw avocado matcha cake garnished with crushed pistachios & kiwi.",
+    "featured": true
+  }
+]
