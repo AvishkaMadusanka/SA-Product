@@ -39,7 +39,7 @@
                         <li><a href="#reviews">Reviews</a></li>
                         <li><a href="#contact">Contact</a></li>
                         <li class="mobile-only-nav-item">
-                            <a href="#" class="mobile-nav-cta" onclick="openOrderModal(); return false;"><i class="fab fa-whatsapp"></i> Order Custom Cake</a>
+                            <a href="#" class="mobile-nav-cta" onclick="openOrderModal(); const m = document.getElementById('navMenu'); if (m) m.classList.remove('active'); return false;"><i class="fab fa-whatsapp"></i> Order Custom Cake</a>
                         </li>
                     </ul>
 
@@ -1413,12 +1413,14 @@
         function setModalOpenState(isOpen) {
             if (isOpen) {
                 document.body.classList.add('modal-open');
+                document.documentElement.classList.add('modal-open');
                 document.body.style.overflow = 'hidden';
             } else {
-                const hasActive = document.querySelector('.gallery-modal.active, .order-modal.active, .feedback-modal.active, .feedback-detail-modal.active');
+                const hasActive = document.querySelector('.gallery-modal.active, .order-modal.active, .feedback-modal.active, .feedback-detail-modal.active, .owner-admin-panel.active');
                 if (!hasActive) {
                     document.body.classList.remove('modal-open');
-                    document.body.style.overflow = 'auto';
+                    document.documentElement.classList.remove('modal-open');
+                    document.body.style.overflow = '';
                 }
             }
         }
@@ -1839,6 +1841,8 @@ _Hello S A Product, I would like to place this cake order. Please confirm availa
                 const originalIndex = list.indexOf(entry);
                 const item = document.createElement('div');
                 item.className = 'feedback-list-item';
+                item.style.cursor = 'pointer';
+                item.addEventListener('click', () => showFeedbackDetail(entry));
 
                 // Image section
                 if (entry.image) {
@@ -2227,7 +2231,7 @@ _Hello S A Product, I would like to place this cake order. Please confirm availa
             toggleOwnerAdminPanel(false);
         });
 
-        // Close gallery on Escape key
+        // Close modals on Escape key
         document.addEventListener('keydown', function (event) {
             if (event.key === 'Escape') {
                 closeBirthdayGallery();
@@ -2238,6 +2242,8 @@ _Hello S A Product, I would like to place this cake order. Please confirm availa
                 closeHealthyGallery();
                 closeAllCakesGallery();
                 closeOrderModal();
+                closeFeedbackPreview();
+                closeFeedbackDetail();
                 toggleOwnerAdminPanel(false);
             }
         });

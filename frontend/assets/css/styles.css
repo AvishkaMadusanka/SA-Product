@@ -1303,6 +1303,7 @@ body.modal-open .header {
     color: var(--primary-light);
 }
 
+
 /* ==================== Responsive Design ==================== */
 /* ==================== Mobile Floating WhatsApp Button (Icon Only) ==================== */
 .mobile-whatsapp-float {
@@ -1342,475 +1343,6 @@ body.owner-mode .mobile-whatsapp-float {
     bottom: 84px;
 }
 
-@media (max-width: 768px) {
-    .header {
-        padding: 4px 0;
-    }
-
-    .navbar {
-        padding: 10px 0;
-    }
-
-    .hamburger {
-        display: flex;
-        width: 42px;
-        height: 42px;
-        align-items: center;
-        justify-content: center;
-        border-radius: 10px;
-        background: rgba(233, 30, 99, 0.05);
-        border: 1px solid rgba(233, 30, 99, 0.12);
-        cursor: pointer;
-        touch-action: manipulation;
-    }
-
-    .header .cta-btn {
-        display: none;
-    }
-
-    .nav-menu {
-        display: none;
-    }
-
-    .nav-menu.active {
-        display: flex;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        flex-direction: column;
-        background: rgba(255, 255, 255, 0.98);
-        -webkit-backdrop-filter: blur(14px);
-        backdrop-filter: blur(14px);
-        padding: 18px 20px 24px;
-        gap: 6px;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
-        border-bottom-left-radius: 20px;
-        border-bottom-right-radius: 20px;
-        border-bottom: 2px solid rgba(233, 30, 99, 0.15);
-        animation: slideNavDown 0.28s ease-out forwards;
-    }
-
-    @keyframes slideNavDown {
-        from {
-            opacity: 0;
-            transform: translateY(-8px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    .nav-menu a {
-        display: block;
-        padding: 12px 14px;
-        font-size: 16px;
-        font-weight: 600;
-        border-radius: 10px;
-        color: var(--dark-color);
-        border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-        touch-action: manipulation;
-    }
-
-    .nav-menu a:hover,
-    .nav-menu a.active {
-        background: rgba(233, 30, 99, 0.08);
-        color: var(--primary-color);
-    }
-
-    .nav-menu .mobile-nav-cta {
-        margin-top: 10px;
-        background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-        color: #fff !important;
-        text-align: center;
-        border-radius: 999px;
-        padding: 12px 20px;
-        font-weight: 700;
-        box-shadow: 0 6px 18px rgba(233, 30, 99, 0.25);
-    }
-
-    .hero {
-        min-height: auto;
-        padding: 40px 0 35px;
-    }
-
-    .hero .container {
-        grid-template-columns: 1fr;
-        gap: 25px;
-        padding: 0 16px;
-    }
-
-    .hero-text {
-        margin-left: 0;
-        text-align: center;
-    }
-
-    .hero-title {
-        font-size: clamp(28px, 7.5vw, 38px);
-        line-height: 1.25;
-        margin-bottom: 14px;
-    }
-
-    .hero-subtitle {
-        font-size: 15px;
-        line-height: 1.6;
-        margin-bottom: 20px;
-    }
-
-    .trust-badges {
-        flex-direction: column;
-        gap: 10px;
-        margin-bottom: 24px;
-    }
-
-    .badge {
-        justify-content: center;
-        padding: 10px 14px;
-        background: #fff;
-        border: 1px solid rgba(233, 30, 99, 0.12);
-        border-radius: 12px;
-        box-shadow: 0 4px 14px rgba(233, 30, 99, 0.06);
-        font-size: 14px;
-    }
-
-    .hero-buttons {
-        flex-direction: column;
-        gap: 12px;
-        width: 100%;
-    }
-
-    .hero-buttons .btn {
-        width: 100%;
-        min-height: 48px;
-        font-size: 15.5px;
-        justify-content: center;
-        touch-action: manipulation;
-    }
-
-    .hero-image {
-        width: 100%;
-        transform: none;
-        margin-top: 10px;
-    }
-
-    .cake-image-placeholder {
-        max-width: 250px;
-        height: 250px;
-        font-size: 64px;
-        margin: 0 auto;
-    }
-
-    .stats-badge {
-        position: static;
-        margin: 16px auto 0;
-        min-width: 150px;
-        padding: 12px 20px;
-        border-radius: 14px;
-    }
-
-    /* Cakes Section on Mobile */
-    .section-header h2 {
-        font-size: 26px;
-        margin-bottom: 8px;
-    }
-
-    .section-header p {
-        font-size: 14.5px;
-    }
-
-    .cakes-grid {
-        grid-template-columns: 1fr;
-        gap: 22px;
-        padding: 0 4px;
-    }
-
-    .cake-card {
-        border-radius: 18px;
-        box-shadow: 0 6px 24px rgba(233, 30, 99, 0.08);
-    }
-
-    .cake-image {
-        height: 210px;
-    }
-
-    .cake-card h3 {
-        font-size: 21px;
-        margin: 16px 16px 8px;
-    }
-
-    .cake-card p {
-        font-size: 14px;
-        margin: 0 16px 16px;
-        line-height: 1.6;
-    }
-
-    .explore-link {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: calc(100% - 32px);
-        margin: 0 16px 18px;
-        padding: 12px 18px;
-        background: rgba(233, 30, 99, 0.08);
-        color: var(--primary-color);
-        border-radius: 999px;
-        font-weight: 700;
-        font-size: 15px;
-        text-decoration: none;
-        touch-action: manipulation;
-    }
-
-    /* Features Grid on Mobile */
-    .features-grid {
-        grid-template-columns: 1fr;
-        gap: 16px;
-    }
-
-    .feature-card {
-        padding: 22px 18px;
-        border-radius: 16px;
-    }
-
-    /* CTA Section on Mobile */
-    .cta-section {
-        padding: 60px 0;
-    }
-
-    .cta-content h2 {
-        font-size: 26px;
-        margin-bottom: 12px;
-    }
-
-    .cta-content > p {
-        font-size: 15px;
-    }
-
-    .cta-methods {
-        grid-template-columns: 1fr;
-        gap: 12px;
-    }
-
-    .cta-buttons {
-        flex-direction: column;
-        gap: 12px;
-    }
-
-    .cta-buttons .btn {
-        width: 100%;
-        min-height: 48px;
-        justify-content: center;
-    }
-
-    /* Order Modal Card on Mobile */
-    .order-modal {
-        padding: 8px 0;
-    }
-
-    .order-modal-card {
-        width: calc(100vw - 16px);
-        margin: 6px auto;
-        padding: 22px 16px;
-        border-radius: 18px;
-        max-height: calc(100vh - 16px);
-    }
-
-    .order-modal-card h3 {
-        font-size: 21px;
-        line-height: 1.25;
-    }
-
-    .order-modal-subtitle {
-        font-size: 13.5px;
-        margin-bottom: 14px;
-    }
-
-    .order-form input,
-    .order-form textarea {
-        font-size: 16px !important;
-        padding: 12px 14px;
-        border-radius: 10px;
-    }
-
-    .order-form-actions {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .order-form-actions .btn {
-        width: 100%;
-        min-height: 50px;
-        font-size: 15.5px;
-    }
-
-    .order-modal-close {
-        top: 10px;
-        right: 12px;
-        width: 36px;
-        height: 36px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    /* Gallery Modals on Mobile */
-    .gallery-container {
-        width: calc(100vw - 16px);
-        padding: 0;
-        border-radius: 18px;
-        max-height: calc(100vh - 24px);
-    }
-
-    .gallery-header {
-        padding: 18px 45px 12px;
-    }
-
-    .gallery-header h2 {
-        font-size: 20px;
-    }
-
-    .gallery-header p {
-        font-size: 13px;
-    }
-
-    .gallery-grid {
-        padding: 16px 12px 24px;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-    }
-
-    .gallery-item {
-        border-radius: 12px;
-        height: 155px;
-    }
-
-    .gallery-close-btn {
-        top: 10px;
-        right: 10px;
-        margin-right: 10px;
-        margin-top: 10px;
-        margin-bottom: -45px;
-        width: 36px;
-        height: 36px;
-        background: rgba(0, 0, 0, 0.65);
-        color: #fff;
-        border-radius: 50%;
-        font-size: 22px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 25;
-    }
-
-    /* Feedback list modal on Mobile */
-    .feedback-modal-card {
-        width: calc(100vw - 16px);
-        margin: 8px auto;
-        padding: 0;
-        grid-template-columns: 1fr;
-        max-height: calc(100vh - 20px);
-        border-radius: 18px;
-    }
-
-    .feedback-modal-image {
-        min-height: 180px;
-    }
-
-    .feedback-modal-content {
-        padding: 18px 16px;
-    }
-
-    .feedback-list-item {
-        grid-template-columns: 1fr;
-    }
-
-    .feedback-item-image {
-        min-height: 140px;
-    }
-
-    /* Footer on Mobile */
-    .footer-content {
-        grid-template-columns: 1fr;
-        gap: 24px;
-        text-align: center;
-    }
-
-    .footer-section ul li {
-        justify-content: center;
-    }
-
-    .social-links {
-        justify-content: center;
-    }
-}
-
-@media (max-width: 480px) {
-    .logo-title {
-        font-size: 20px;
-    }
-
-    .logo-subtitle {
-        font-size: 9.5px;
-    }
-
-    .logo-image {
-        height: 38px;
-    }
-
-    .container {
-        padding: 0 14px;
-    }
-
-    .hero-title {
-        font-size: 27px;
-    }
-
-    .cake-image-placeholder {
-        max-width: 220px;
-        height: 220px;
-        font-size: 55px;
-    }
-
-    .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 8px;
-    }
-
-    .gallery-item {
-        height: 140px;
-    }
-
-    .mobile-whatsapp-float {
-        bottom: 18px;
-        right: 16px;
-        width: 52px;
-        height: 52px;
-    }
-
-    .mobile-whatsapp-float i {
-        font-size: 28px;
-    }
-}
-
-@media (max-width: 1024px) {
-    .hero .container {
-        gap: 30px;
-    }
-
-    .trust-badges {
-        gap: 10px;
-    }
-
-    .badge {
-        padding: 10px 14px;
-        font-size: 13px;
-    }
-
-    .section-header h2,
-    .cta-content h2 {
-        font-size: clamp(30px, 4.2vw, 42px);
-    }
-}
 
 /* ==================== Birthday Gallery Modal ==================== */
 .gallery-modal {
@@ -2510,48 +2042,6 @@ body.owner-mode .owner-admin-panel.active {
     transform: scale(1.05);
 }
 
-@media (max-width: 768px) {
-    .gallery-container {
-        padding: 0;
-    }
-
-    .gallery-header {
-        padding: 22px 50px 16px;
-    }
-
-    .gallery-header h2 {
-        font-size: 26px;
-    }
-
-    .gallery-grid {
-        padding: 20px 16px 30px;
-        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-        gap: 15px;
-    }
-
-    .gallery-close-btn {
-        top: 12px;
-        right: 12px;
-        margin-right: 12px;
-        margin-top: 12px;
-        margin-bottom: -45px;
-        width: 38px;
-        height: 38px;
-        font-size: 24px;
-    }
-
-    .owner-admin-toggle {
-        right: 14px;
-        bottom: 14px;
-        padding: 10px 14px;
-    }
-
-    .owner-admin-panel {
-        right: 14px;
-        bottom: 62px;
-        width: calc(100vw - 28px);
-    }
-}
 
 /* ==================== Feedback Detail Modal ==================== */
 .feedback-detail-modal {
@@ -2669,6 +2159,7 @@ body.owner-mode .owner-admin-panel.active {
     gap: 12px;
     justify-content: flex-end;
 }
+
 
 /* ==================== Home Page Feedback / Reviews Section ==================== */
 .feedback-section {
@@ -2824,4 +2315,1054 @@ body.owner-mode .owner-admin-panel.active {
 
 .feedback-toast i {
     font-size: 20px;
+}
+
+
+
+/* ==================== Responsive Design ==================== */
+
+/* Prevent background page scroll on mobile and desktop when any modal is active */
+html.modal-open,
+body.modal-open {
+    overflow: hidden !important;
+    height: 100% !important;
+    touch-action: none;
+    -webkit-overflow-scrolling: auto;
+}
+
+/* Hide/demote sticky header behind modals when any modal is open */
+body.modal-open .header,
+body:has(.gallery-modal.active) .header,
+body:has(.order-modal.active) .header,
+body:has(.feedback-modal.active) .header,
+body:has(.feedback-detail-modal.active) .header,
+body:has(.owner-admin-panel.active) .header {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    z-index: 0 !important;
+}
+
+/* Hide floating elements when any modal is open */
+body.modal-open .mobile-whatsapp-float,
+body:has(.gallery-modal.active) .mobile-whatsapp-float,
+body:has(.order-modal.active) .mobile-whatsapp-float,
+body:has(.feedback-modal.active) .mobile-whatsapp-float,
+body:has(.feedback-detail-modal.active) .mobile-whatsapp-float,
+body.modal-open .owner-admin-toggle,
+body:has(.gallery-modal.active) .owner-admin-toggle,
+body:has(.order-modal.active) .owner-admin-toggle,
+body:has(.feedback-modal.active) .owner-admin-toggle,
+body:has(.feedback-detail-modal.active) .owner-admin-toggle {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    z-index: 0 !important;
+}
+
+@media (max-width: 1024px) {
+    .hero .container {
+        gap: 30px;
+    }
+
+    .trust-badges {
+        gap: 10px;
+    }
+
+    .badge {
+        padding: 10px 14px;
+        font-size: 13px;
+    }
+
+    .section-header h2,
+    .cta-content h2 {
+        font-size: clamp(30px, 4.2vw, 42px);
+    }
+}
+
+@media (max-width: 768px) {
+    /* Header & Navigation */
+    .header {
+        padding: 4px 0;
+    }
+
+    .navbar {
+        padding: 10px 0;
+    }
+
+    .nav-wrapper {
+        position: relative;
+    }
+
+    .logo {
+        gap: 8px;
+    }
+
+    .logo-image {
+        height: 40px;
+        width: auto;
+    }
+
+    .logo-title {
+        font-size: 22px;
+    }
+
+    .logo-subtitle {
+        font-size: 10px;
+    }
+
+    .hamburger {
+        display: flex;
+        width: 42px;
+        height: 42px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        background: rgba(233, 30, 99, 0.05);
+        border: 1px solid rgba(233, 30, 99, 0.15);
+        cursor: pointer;
+        touch-action: manipulation;
+    }
+
+    .header .cta-btn {
+        display: none;
+    }
+
+    .nav-menu {
+        display: none;
+    }
+
+    .nav-menu.active {
+        display: flex;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: rgba(255, 255, 255, 0.98);
+        -webkit-backdrop-filter: blur(14px);
+        backdrop-filter: blur(14px);
+        padding: 16px 18px 22px;
+        gap: 6px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        border-bottom: 2px solid rgba(233, 30, 99, 0.15);
+        animation: slideNavDown 0.28s ease-out forwards;
+        z-index: 1002;
+    }
+
+    @keyframes slideNavDown {
+        from {
+            opacity: 0;
+            transform: translateY(-8px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .nav-menu a {
+        display: block;
+        padding: 12px 14px;
+        font-size: 15.5px;
+        font-weight: 600;
+        border-radius: 10px;
+        color: var(--dark-color);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+        touch-action: manipulation;
+    }
+
+    .nav-menu a:hover,
+    .nav-menu a.active {
+        background: rgba(233, 30, 99, 0.08);
+        color: var(--primary-color);
+    }
+
+    .nav-menu .mobile-nav-cta {
+        margin-top: 8px;
+        background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+        color: #fff !important;
+        text-align: center;
+        border-radius: 999px;
+        padding: 13px 20px;
+        font-weight: 700;
+        box-shadow: 0 6px 18px rgba(233, 30, 99, 0.25);
+    }
+
+    /* Hero Section */
+    .hero {
+        min-height: auto;
+        padding: 35px 0 30px;
+    }
+
+    .hero .container {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 0 16px;
+    }
+
+    .hero-text {
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .hero-title {
+        font-size: clamp(28px, 7.2vw, 38px);
+        line-height: 1.25;
+        margin-bottom: 14px;
+    }
+
+    .hero-subtitle {
+        font-size: 14.5px;
+        line-height: 1.6;
+        margin-bottom: 18px;
+    }
+
+    .trust-badges {
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 22px;
+    }
+
+    .badge {
+        justify-content: center;
+        padding: 10px 14px;
+        background: #fff;
+        border: 1px solid rgba(233, 30, 99, 0.12);
+        border-radius: 12px;
+        box-shadow: 0 4px 14px rgba(233, 30, 99, 0.06);
+        font-size: 13.5px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+        min-height: 48px;
+        font-size: 15px;
+        justify-content: center;
+        touch-action: manipulation;
+    }
+
+    .hero-image {
+        width: 100%;
+        transform: none;
+        margin-top: 5px;
+    }
+
+    .cake-image-placeholder {
+        width: min(100%, 250px);
+        height: 250px;
+        font-size: 60px;
+        margin: 0 auto;
+        border-radius: 18px;
+    }
+
+    .stats-badge {
+        position: static;
+        margin: 16px auto 0;
+        min-width: 150px;
+        padding: 12px 20px;
+        border-radius: 14px;
+        touch-action: manipulation;
+    }
+
+    /* Cake Categories Section */
+    .cakes-section {
+        padding: 60px 0;
+    }
+
+    .section-header h2 {
+        font-size: 26px;
+        margin-bottom: 8px;
+    }
+
+    .section-header p {
+        font-size: 14px;
+    }
+
+    .cakes-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+        padding: 0 4px;
+    }
+
+    .cake-card {
+        border-radius: 18px;
+        box-shadow: 0 6px 24px rgba(233, 30, 99, 0.08);
+        cursor: pointer;
+    }
+
+    .cake-image {
+        height: 210px;
+    }
+
+    .cake-card h3 {
+        font-size: 21px;
+        margin: 16px 16px 8px;
+    }
+
+    .cake-card p {
+        font-size: 14px;
+        margin: 0 16px 16px;
+        line-height: 1.6;
+    }
+
+    .explore-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: calc(100% - 32px);
+        margin: 0 16px 18px;
+        padding: 12px 18px;
+        background: rgba(233, 30, 99, 0.08);
+        color: var(--primary-color);
+        border-radius: 999px;
+        font-weight: 700;
+        font-size: 15px;
+        text-decoration: none;
+        touch-action: manipulation;
+    }
+
+    /* Features Section */
+    .why-us-section {
+        padding: 60px 0;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .feature-card {
+        padding: 22px 18px;
+        border-radius: 16px;
+    }
+
+    /* Customer Reviews / Feedback Section */
+    .feedback-section {
+        padding: 55px 0 50px;
+    }
+
+    .feedback-home-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        margin-bottom: 30px;
+    }
+
+    .feedback-home-card {
+        padding: 22px 18px;
+        border-radius: 18px;
+    }
+
+    .feedback-card-photo {
+        height: 175px;
+        border-radius: 12px;
+    }
+
+    .feedback-home-actions {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+    }
+
+    .feedback-home-actions .btn {
+        width: 100%;
+        min-height: 48px;
+        justify-content: center;
+        font-size: 15px;
+    }
+
+    /* Call To Action Section */
+    .cta-section {
+        padding: 55px 0;
+    }
+
+    .cta-content h2 {
+        font-size: 26px;
+        margin-bottom: 12px;
+    }
+
+    .cta-content > p {
+        font-size: 14.5px;
+        margin-bottom: 24px;
+    }
+
+    .cta-methods {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin-bottom: 22px;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .cta-buttons .btn {
+        width: 100%;
+        min-height: 48px;
+        justify-content: center;
+    }
+
+    .trust-text {
+        font-size: 13px;
+        line-height: 1.5;
+        flex-direction: column;
+        gap: 6px;
+        text-align: center;
+    }
+
+    /* Footer */
+    .footer {
+        padding: 50px 0 20px;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        text-align: center;
+    }
+
+    .footer-section ul li {
+        justify-content: center;
+    }
+
+    .social-links {
+        justify-content: center;
+    }
+
+    /* ==================== ALL MODALS (Mobile Optimizations) ==================== */
+
+    /* 1. Order Modal */
+    .order-modal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 3000;
+        padding: 10px;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    .order-modal.active {
+        display: flex !important;
+    }
+
+    .order-modal-backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(12, 14, 20, 0.75);
+        -webkit-backdrop-filter: blur(8px);
+        backdrop-filter: blur(8px);
+    }
+
+    .order-modal-card {
+        position: relative;
+        width: min(500px, calc(100vw - 20px));
+        margin: 0 auto;
+        padding: 22px 18px 20px;
+        border-radius: 18px;
+        max-height: calc(100dvh - 24px);
+        max-height: calc(100vh - 24px);
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+        background: #fff;
+    }
+
+    .order-modal-close {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 2px solid var(--primary-color);
+        background: rgba(255, 255, 255, 0.96);
+        color: var(--primary-color);
+        font-size: 26px;
+        line-height: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        z-index: 20;
+        transition: var(--transition);
+        touch-action: manipulation;
+    }
+
+    .order-modal-close:hover,
+    .order-modal-close:active {
+        background: var(--primary-color);
+        color: #fff;
+        transform: rotate(90deg);
+    }
+
+    .order-modal-card h3 {
+        font-size: 20px;
+        margin-bottom: 4px;
+        padding-right: 44px;
+        line-height: 1.3;
+    }
+
+    .order-modal-subtitle {
+        font-size: 13px;
+        margin-bottom: 14px;
+        line-height: 1.5;
+    }
+
+    .order-form input,
+    .order-form textarea {
+        font-size: 16px !important;
+        padding: 12px 13px;
+        border-radius: 10px;
+        border: 1.5px solid rgba(0, 0, 0, 0.14);
+        width: 100%;
+    }
+
+    .order-form input[type="file"] {
+        font-size: 14px !important;
+        padding: 8px 10px;
+    }
+
+    .order-form-actions {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+        width: 100%;
+    }
+
+    .order-form-actions .btn {
+        width: 100%;
+        min-height: 48px;
+        font-size: 15px;
+        border-radius: 12px;
+        justify-content: center;
+    }
+
+    /* 2. Gallery Modals */
+    .gallery-modal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 3000;
+        padding: 10px;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    .gallery-modal.active {
+        display: flex !important;
+    }
+
+    .gallery-container {
+        position: relative;
+        width: min(1000px, calc(100vw - 16px));
+        max-height: calc(100dvh - 24px);
+        max-height: calc(100vh - 24px);
+        border-radius: 18px;
+        padding: 0;
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+        background: #fff;
+    }
+
+    .gallery-header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        padding: 16px 52px 14px 18px;
+        background: rgba(255, 255, 255, 0.98);
+        -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(12px);
+        text-align: left;
+        border-bottom: 1px solid rgba(233, 30, 99, 0.12);
+    }
+
+    .gallery-header h2 {
+        font-size: 20px;
+        font-weight: 800;
+        margin-bottom: 2px;
+        line-height: 1.25;
+    }
+
+    .gallery-header p {
+        font-size: 12.5px;
+        color: var(--text-light);
+        line-height: 1.4;
+        margin: 0;
+    }
+
+    .gallery-close-btn {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        float: none;
+        margin: 0;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 2px solid var(--primary-color);
+        background: rgba(255, 255, 255, 0.96);
+        color: var(--primary-color);
+        font-size: 26px;
+        line-height: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        z-index: 30;
+        transition: var(--transition);
+        touch-action: manipulation;
+    }
+
+    .gallery-close-btn:hover,
+    .gallery-close-btn:active {
+        background: var(--primary-color);
+        color: #fff;
+        transform: rotate(90deg);
+    }
+
+    .gallery-grid {
+        padding: 14px 12px 24px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .gallery-item {
+        border-radius: 12px;
+        aspect-ratio: 1;
+        height: auto;
+        min-height: 0;
+        overflow: hidden;
+    }
+
+    .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* 3. Feedback Preview Modal */
+    .feedback-modal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 3000;
+        padding: 10px;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    .feedback-modal.active {
+        display: flex !important;
+    }
+
+    .feedback-modal-backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(12, 14, 20, 0.75);
+        -webkit-backdrop-filter: blur(8px);
+        backdrop-filter: blur(8px);
+    }
+
+    .feedback-modal-card {
+        position: relative;
+        width: min(520px, calc(100vw - 20px));
+        margin: 0 auto;
+        padding: 0;
+        grid-template-columns: 1fr;
+        max-height: calc(100dvh - 24px);
+        max-height: calc(100vh - 24px);
+        border-radius: 18px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+        background: #fff;
+    }
+
+    .feedback-modal-close {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 2px solid var(--primary-color);
+        background: rgba(255, 255, 255, 0.96);
+        color: var(--primary-color);
+        font-size: 26px;
+        line-height: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+        z-index: 25;
+        transition: var(--transition);
+        touch-action: manipulation;
+    }
+
+    .feedback-modal-close:hover,
+    .feedback-modal-close:active {
+        background: var(--primary-color);
+        color: #fff;
+        transform: rotate(90deg);
+    }
+
+    .feedback-modal-image {
+        width: 100%;
+        height: 180px;
+        min-height: 180px;
+        background-size: cover;
+        background-position: center;
+        border-top-left-radius: 18px;
+        border-top-right-radius: 18px;
+    }
+
+    .feedback-modal-content {
+        padding: 18px 16px 20px;
+        gap: 10px;
+    }
+
+    .feedback-modal-label {
+        font-size: 13px;
+        font-weight: 700;
+    }
+
+    .feedback-modal h3 {
+        font-size: 20px;
+        line-height: 1.3;
+    }
+
+    .feedback-modal p {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .feedback-modal-actions {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 12px;
+        width: 100%;
+    }
+
+    .feedback-modal-actions .btn {
+        width: 100%;
+        min-height: 48px;
+        font-size: 14.5px;
+        border-radius: 12px;
+        justify-content: center;
+    }
+
+    /* 4. Feedback List Modal */
+    .feedback-list-title {
+        font-size: 20px;
+        margin: 0 0 12px 0;
+        padding-right: 44px;
+    }
+
+    .feedback-list {
+        max-height: calc(100dvh - 190px);
+        max-height: calc(100vh - 190px);
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+        gap: 10px;
+        padding-right: 4px;
+    }
+
+    .feedback-list::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .feedback-list-item {
+        padding: 14px 12px;
+        border-radius: 14px;
+        gap: 8px;
+    }
+
+    .feedback-item-image {
+        min-height: 130px;
+        border-radius: 10px;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .feedback-name {
+        font-size: 14.5px;
+    }
+
+    .feedback-time {
+        font-size: 11.5px;
+    }
+
+    .feedback-message {
+        font-size: 13.5px;
+        line-height: 1.6;
+    }
+
+    .feedback-list-actions {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 12px;
+        width: 100%;
+    }
+
+    .feedback-list-actions .btn {
+        width: 100%;
+        min-height: 48px;
+        font-size: 14.5px;
+        border-radius: 12px;
+        justify-content: center;
+    }
+
+    /* 5. Feedback Detail Modal */
+    .feedback-detail-modal {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 3100;
+        padding: 10px;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    .feedback-detail-modal.active {
+        display: flex !important;
+    }
+
+    .feedback-detail-backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(12, 14, 20, 0.75);
+        -webkit-backdrop-filter: blur(8px);
+        backdrop-filter: blur(8px);
+    }
+
+    .feedback-detail-card {
+        position: relative;
+        width: min(520px, calc(100vw - 20px));
+        margin: 0 auto;
+        border-radius: 18px;
+        max-height: calc(100dvh - 24px);
+        max-height: calc(100vh - 24px);
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+        background: #fff;
+    }
+
+    .feedback-detail-close {
+        position: absolute;
+        top: 12px;
+        right: 12px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 2px solid var(--primary-color);
+        background: rgba(255, 255, 255, 0.96);
+        color: var(--primary-color);
+        font-size: 26px;
+        line-height: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+        z-index: 25;
+        transition: var(--transition);
+        touch-action: manipulation;
+    }
+
+    .feedback-detail-close:hover,
+    .feedback-detail-close:active {
+        background: var(--primary-color);
+        color: #fff;
+        transform: rotate(90deg);
+    }
+
+    .feedback-detail-image {
+        width: 100%;
+        height: 180px;
+        background-size: cover;
+        background-position: center;
+        background-color: #f8f9fb;
+        border-top-left-radius: 18px;
+        border-top-right-radius: 18px;
+    }
+
+    .feedback-detail-content {
+        padding: 18px 16px 20px;
+        max-height: none;
+        overflow-y: visible;
+    }
+
+    .feedback-detail-header {
+        margin-bottom: 14px;
+        padding-bottom: 10px;
+    }
+
+    .feedback-detail-header h2 {
+        font-size: 20px;
+        line-height: 1.3;
+        margin-bottom: 4px;
+    }
+
+    .feedback-detail-date {
+        font-size: 12.5px;
+    }
+
+    .feedback-detail-message {
+        font-size: 14px;
+        line-height: 1.7;
+        margin-bottom: 18px;
+        padding: 14px 12px;
+        border-radius: 8px;
+    }
+
+    .feedback-detail-actions .btn {
+        width: 100%;
+        min-height: 44px;
+        font-size: 14.5px;
+        border-radius: 12px;
+        justify-content: center;
+    }
+
+    /* 6. Owner Admin Panel on Mobile */
+    .owner-admin-toggle {
+        right: 14px;
+        bottom: 14px;
+        padding: 10px 14px;
+    }
+
+    .owner-admin-panel {
+        right: 12px;
+        bottom: 60px;
+        width: calc(100vw - 24px);
+        max-height: calc(100dvh - 80px);
+        max-height: calc(100vh - 80px);
+        padding: 16px 14px;
+        border-radius: 16px;
+    }
+
+    .owner-admin-close {
+        width: 38px;
+        height: 38px;
+    }
+
+    .owner-admin-panel select,
+    .owner-admin-panel input[type="file"] {
+        font-size: 15px;
+    }
+
+    .admin-order-item {
+        grid-template-columns: 56px 1fr;
+        gap: 10px;
+        padding: 8px;
+    }
+
+    .admin-order-photo {
+        width: 56px;
+        height: 56px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-title {
+        font-size: 20px;
+    }
+
+    .logo-subtitle {
+        font-size: 9.5px;
+    }
+
+    .logo-image {
+        height: 38px;
+    }
+
+    .container {
+        padding: 0 14px;
+    }
+
+    .hero-title {
+        font-size: 27px;
+    }
+
+    .cake-image-placeholder {
+        max-width: 220px;
+        height: 220px;
+        font-size: 55px;
+    }
+
+    .gallery-grid {
+        gap: 8px;
+        padding: 12px 10px 20px;
+    }
+
+    .mobile-whatsapp-float {
+        bottom: 18px;
+        right: 16px;
+        width: 52px;
+        height: 52px;
+    }
+
+    .mobile-whatsapp-float i {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 360px) {
+    .container {
+        padding: 0 10px;
+    }
+
+    .hero-title {
+        font-size: 24px;
+    }
+
+    .hero-subtitle {
+        font-size: 13.5px;
+    }
+
+    .badge {
+        font-size: 12.5px;
+        padding: 8px 10px;
+    }
+
+    .gallery-header h2 {
+        font-size: 18px;
+    }
+
+    .gallery-grid {
+        gap: 6px;
+        padding: 10px 8px 16px;
+    }
+
+    .order-modal-card,
+    .feedback-modal-card,
+    .feedback-detail-card {
+        padding: 18px 12px 16px;
+        width: calc(100vw - 12px);
+    }
 }
